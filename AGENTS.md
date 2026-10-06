@@ -1,33 +1,20 @@
-> **First-time setup**: Customize this file for your project. Prompt the user to customize this file for their project.
-> For Mintlify product knowledge (components, configuration, writing standards),
-> install the Mintlify skill: `npx skills add https://mintlify.com/docs`
-
 # Documentation project instructions
 
-## About this project
-
-- This is a documentation site built on [Mintlify](https://mintlify.com)
-- Pages are MDX files with YAML frontmatter
-- Configuration lives in `docs.json`
-- Use the Mintlify MCP server, `https://mcp.mintlify.com`, to edit content and settings via MCP
-- Use the Mintlify docs MCP server, `https://www.mintlify.com/docs/mcp`, to query information about using Mintlify via MCP
+- Mintlify site for First Bank DRC's Corporate Internet Banking (CIB) platform. Pages are MDX with YAML frontmatter; config is `docs.json`.
+- Three tabs: Web Portal (`web-portal/`), Mobile App (`mobile/`), Host-to-Host (`host-to-host/`).
+- The same MDX also builds the self-hosted React (Docusaurus) site in `../react-site` via `../tools/sync-docusaurus.mjs`. Only use components that script's shims support: Card, CardGroup, Columns, Steps, Step, Tabs, Tab, Accordion, AccordionGroup, Frame, Note, Info, Tip, Warning, Check.
+- Images: absolute paths under `/images/<channel>/<page>/`. Mobile screenshots use `style={{ maxWidth: "300px" }}`.
 
 ## Terminology
 
-{/* Add product-specific terms and preferred usage */}
-{/* Example: Use "workspace" not "project", "member" not "user" */}
+- "First Bank DRC" (not FBN, FB DRC) in customer-facing text
+- Officer roles: Initiator, Authorizer, Initiator-Authorizer; codes `ROLE_INITIATOR`, `ROLE_AUTHORIZER`, `ROLE_INITIATOR_AUTHORIZER`
+- Queues: Transaction Queue (payments), Activities Queue (Web Portal) / Activity Queue (mobile app label)
 
-## Style preferences
+## Style
 
-{/* Add any project-specific style rules below */}
-
-- Use active voice and second person ("you")
-- Keep sentences concise — one idea per sentence
-- Use sentence case for headings
-- Bold for UI elements: Click **Settings**
-- Code formatting for file names, commands, paths, and code references
-
-## Content boundaries
-
-{/* Define what should and shouldn't be documented */}
-{/* Example: Don't document internal admin features */}
+- Active voice, second person, one idea per sentence
+- Sentence case headings
+- Bold for UI elements; code format for file names, XML elements, and codes
+- No em dashes
+- Never document behaviour that isn't visible in screenshots or confirmed by the bank

@@ -1,55 +1,46 @@
-# Mintlify Starter Kit
+# First Bank DRC CIB Guide (Mintlify)
 
-Use the starter kit to get your docs deployed and ready to customize.
+User guide for First Bank DRC's Corporate Internet Banking platform, covering the Web Portal, Mobile App, and Host-to-Host channels.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## Structure
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+| Folder | Content |
+|---|---|
+| `/` | Home (`index.mdx`), platform overview, support |
+| `web-portal/` | Sign-up, dashboard, accounts, payments, approvals, administration, settings |
+| `mobile/` | Mobile app guide |
+| `host-to-host/` | H2H integration guide for corporate IT teams |
+| `images/` | Screenshots, grouped by channel and page |
+| `logo/`, `favicon.png` | First Bank DRC branding |
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+Navigation, colours, and redirects from old URLs are all in `docs.json`.
 
-## AI-assisted writing
-
-Set up your AI coding tool to work with Mintlify:
+## Preview locally
 
 ```bash
-npx skills add https://mintlify.com/docs
-```
-
-This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
-
-See the [AI tools guides](/ai-tools) for tool-specific setup.
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
 npm i -g mint
-```
-
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
 mint dev
 ```
 
-View your local preview at `http://localhost:3000`.
+Open http://localhost:3000.
 
-## Publishing changes
+## Checks before every push
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+```bash
+mint validate       # build check
+mint broken-links   # internal link check
+```
 
-## Need help?
+Then run `git status` and make sure every new image under `images/` is staged.
 
-### Troubleshooting
+## Publishing
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+Connect this repo to Mintlify with the GitHub app (dashboard.mintlify.com > Settings > GitHub app). Every push to the default branch deploys automatically.
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+## Writing style
+
+- Active voice, second person ("you")
+- Sentence case for headings
+- Bold for UI labels: select **Confirm Transfer**
+- No em dashes
+- Only document what is visible in the product or confirmed by the bank. Unconfirmed drafts live outside this folder.
