@@ -1,75 +1,75 @@
 ---
-title: "H2H onboarding"
-sidebarTitle: "Onboarding"
-description: "The steps to connect your systems to First Bank DRC over Host-to-Host, from request to go-live"
+title: "Intégration H2H"
+sidebarTitle: "Intégration"
+description: "Les étapes pour connecter vos systèmes à First Bank DRC en Host-to-Host, de la demande à la mise en production"
 ---
 
-Complete these steps in order before you go live. Each step is owned by your organisation, by First Bank DRC, or by both.
+Réalisez ces étapes dans l'ordre avant la mise en production. Chaque étape relève de votre organisation, de First Bank DRC, ou des deux.
 
 <Steps>
-  <Step title="Request H2H access (you)">
-    Ask your First Bank DRC relationship manager for H2H connectivity. The Bank sends an onboarding form to capture your details and requirements.
+  <Step title="Demander l'accès H2H (vous)">
+    Demandez la connectivité H2H à votre chargé de clientèle First Bank DRC. La Banque vous envoie un formulaire d'intégration pour recueillir vos informations et vos besoins.
   </Step>
-  <Step title="Provide your static IP address (you)">
-    Give the Bank the static outbound IP address that all your SFTP connections will come from. Dynamic or shared IP addresses are not accepted.
+  <Step title="Communiquer votre adresse IP statique (vous)">
+    Communiquez à la Banque l'adresse IP statique sortante depuis laquelle toutes vos connexions SFTP seront établies. Les adresses IP dynamiques ou partagées ne sont pas acceptées.
   </Step>
-  <Step title="SFTP account and folder set up (Bank)">
-    The Bank creates your SFTP account, username, and password, sets up your customer folder with its `Acknowledgements` sub-folder, and whitelists your IP address.
+  <Step title="Création du compte et du dossier SFTP (Banque)">
+    La Banque crée votre compte SFTP, votre nom d'utilisateur et votre mot de passe, configure votre dossier client avec son sous-dossier `Acknowledgements` et inscrit votre adresse IP en liste blanche.
   </Step>
-  <Step title="Receive SFTP details (Bank)">
-    The Bank sends you the SFTP server address, port, username, password, and full folder path through a secure channel. The password is sent separately from the username.
+  <Step title="Recevoir les informations SFTP (Banque)">
+    La Banque vous transmet l'adresse du serveur SFTP, le port, le nom d'utilisateur, le mot de passe et le chemin complet du dossier par un canal sécurisé. Le mot de passe est envoyé séparément du nom d'utilisateur.
   </Step>
-  <Step title="Receive the Bank's public key (Bank)">
-    The Bank sends you its PGP public key (`bank_public_key`) through a secure channel. Store it safely. You'll use it to encrypt every payment file.
+  <Step title="Recevoir la clé publique de la Banque (Banque)">
+    La Banque vous transmet sa clé publique PGP (`bank_public_key`) par un canal sécurisé. Conservez-la en lieu sûr. Vous l'utiliserez pour chiffrer chaque fichier de paiement.
   </Step>
-  <Step title="Generate your PGP key pair (you)">
-    Create your own PGP key pair. Keep the private key secure and never share it.
+  <Step title="Générer votre paire de clés PGP (vous)">
+    Créez votre propre paire de clés PGP. Protégez la clé privée et ne la communiquez jamais.
   </Step>
-  <Step title="Upload your public key (you)">
-    Upload your public key (`customer_public_key`) to your customer folder on the SFTP server. The Bank uses it to encrypt your acknowledgement files.
+  <Step title="Déposer votre clé publique (vous)">
+    Déposez votre clé publique (`customer_public_key`) dans votre dossier client sur le serveur SFTP. La Banque l'utilise pour chiffrer vos fichiers d'accusé de réception.
   </Step>
-  <Step title="Test the connection (both)">
-    Connect to the SFTP server from your whitelisted IP using the username and password you were given. The Bank confirms that authentication and folder access work. Any issues are fixed before you continue.
+  <Step title="Tester la connexion (les deux)">
+    Connectez-vous au serveur SFTP depuis votre adresse IP autorisée avec le nom d'utilisateur et le mot de passe qui vous ont été remis. La Banque confirme que l'authentification et l'accès au dossier fonctionnent. Tout problème est corrigé avant de poursuivre.
   </Step>
-  <Step title="Submit a test file (you)">
-    Prepare a test payment file in the correct XML format, encrypt it with `bank_public_key`, and upload it to your customer folder. The Bank confirms it was decrypted, read, and acknowledged.
+  <Step title="Soumettre un fichier de test (vous)">
+    Préparez un fichier de paiement de test au format XML correct, chiffrez-le avec `bank_public_key` et déposez-le dans votre dossier client. La Banque confirme qu'il a été déchiffré, lu et qu'un accusé de réception a été émis.
   </Step>
-  <Step title="Check the test results (both)">
-    Collect and decrypt the acknowledgement file from `/Acknowledgements/`, and confirm the transaction statuses are as expected.
+  <Step title="Vérifier les résultats du test (les deux)">
+    Récupérez et déchiffrez le fichier d'accusé de réception dans `/Acknowledgements/`, puis vérifiez que les statuts des transactions sont conformes aux attentes.
   </Step>
-  <Step title="Support handover (Bank)">
-    The Bank registers your organisation for H2H support and shares the support contacts.
+  <Step title="Passation au support (Banque)">
+    La Banque enregistre votre organisation auprès du support H2H et vous communique les contacts du support.
   </Step>
-  <Step title="Go-live sign-off (both)">
-    Both sides confirm all steps are complete. The Bank activates your account for production and tells you the go-live date.
+  <Step title="Validation de la mise en production (les deux)">
+    Les deux parties confirment que toutes les étapes sont terminées. La Banque active votre compte en production et vous indique la date de mise en production.
   </Step>
 </Steps>
 
-## Who does what
+## Rôle de chacun
 
 <Tabs>
-  <Tab title="Your IT team">
-    - Generate and protect your PGP key pair, and keep the SFTP username and password safe
-    - Provide a static outbound IP address for whitelisting
-    - Upload `customer_public_key` to your customer folder
-    - Build and maintain the link between your ERP or treasury system and the SFTP server
-    - Encrypt every payment file with `bank_public_key` and validate it against the H2H XSD before upload
-    - Poll the `/Acknowledgements/` folder and process acknowledgement files
-    - Tell the Bank in advance about any change to your static IP address
+  <Tab title="Votre équipe informatique">
+    - Générer et protéger votre paire de clés PGP, et conserver en lieu sûr le nom d'utilisateur et le mot de passe SFTP
+    - Fournir une adresse IP statique sortante à inscrire en liste blanche
+    - Déposer `customer_public_key` dans votre dossier client
+    - Mettre en place et maintenir la liaison entre votre ERP ou votre système de trésorerie et le serveur SFTP
+    - Chiffrer chaque fichier de paiement avec `bank_public_key` et le valider par rapport au XSD H2H avant son dépôt
+    - Interroger le dossier `/Acknowledgements/` et traiter les fichiers d'accusé de réception
+    - Informer la Banque à l'avance de tout changement de votre adresse IP statique
   </Tab>
-  <Tab title="Your finance team">
-    - Make sure source accounts have enough funds before files are submitted
-    - Review and approve payment files before submission, in line with your internal controls
-    - Reconcile acknowledgement files against what was submitted
-    - Work with your IT team on any failed payments that need investigating or resubmitting
+  <Tab title="Votre équipe financière">
+    - S'assurer que les comptes source disposent de fonds suffisants avant la soumission des fichiers
+    - Vérifier et approuver les fichiers de paiement avant leur soumission, conformément à vos contrôles internes
+    - Rapprocher les fichiers d'accusé de réception avec les éléments soumis
+    - Collaborer avec votre équipe informatique sur les paiements en échec à analyser ou à soumettre de nouveau
   </Tab>
   <Tab title="First Bank DRC">
-    - Provide and maintain the SFTP server, your folders, and your SFTP account
-    - Generate and securely share `bank_public_key`
-    - Whitelist your static IP address
-    - Run the CIB platform that processes your files and creates acknowledgements
-    - Provide support during onboarding and in production
-    - Give you adequate notice of changes to the SFTP environment, file specifications, or keys
-    - Through your relationship manager: handle your onboarding request, share bank code and remittance purpose code lists on request, and keep you informed during incidents
+    - Fournir et maintenir le serveur SFTP, vos dossiers et votre compte SFTP
+    - Générer `bank_public_key` et la communiquer de manière sécurisée
+    - Inscrire votre adresse IP statique en liste blanche
+    - Exploiter la plateforme CIB qui traite vos fichiers et génère les accusés de réception
+    - Assurer le support pendant l'intégration et en production
+    - Vous informer suffisamment à l'avance de toute modification de l'environnement SFTP, des spécifications des fichiers ou des clés
+    - Par l'intermédiaire de votre chargé de clientèle : traiter votre demande d'intégration, communiquer sur demande les listes des codes banque et des codes d'objectif du versement, et vous tenir informé en cas d'incident
   </Tab>
 </Tabs>

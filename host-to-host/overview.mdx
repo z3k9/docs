@@ -1,81 +1,81 @@
 ---
-title: "Host-to-Host (H2H) overview"
-sidebarTitle: "Overview"
-description: "Send payment files from your ERP or treasury system straight to First Bank DRC over secure, encrypted SFTP"
+title: "Présentation du Host-to-Host (H2H)"
+sidebarTitle: "Présentation"
+description: "Transmettez vos fichiers de paiement depuis votre ERP ou votre système de trésorerie directement à First Bank DRC via une connexion SFTP sécurisée et chiffrée"
 ---
 
-Host-to-Host (H2H) lets your ERP or treasury system send payment instructions directly to First Bank DRC's CIB platform. Files travel over an encrypted SFTP connection, so there's no need to key or upload payments in the Web Portal.
+Le Host-to-Host (H2H) permet à votre ERP ou à votre système de trésorerie d'envoyer des ordres de paiement directement à la plateforme CIB de First Bank DRC. Les fichiers transitent par une connexion SFTP chiffrée : vous n'avez donc pas besoin de saisir ni de charger vos paiements dans le Portail Web.
 
-H2H suits organisations with high payment volumes or payments generated automatically by their finance systems.
+Le H2H convient aux organisations qui traitent d'importants volumes de paiements ou dont les paiements sont générés automatiquement par leurs systèmes financiers.
 
 <Warning>
-Every payment file must follow the [H2H file specification](/host-to-host/file-specifications) and be encrypted with the Bank's PGP public key before upload. Files that don't conform, or aren't encrypted, are rejected without being processed.
+Chaque fichier de paiement doit respecter la [spécification des fichiers H2H](/host-to-host/file-specifications) et être chiffré avec la clé publique PGP de la Banque avant son dépôt. Les fichiers non conformes ou non chiffrés sont rejetés sans être traités.
 </Warning>
 
-## Supported payment types
+## Types de paiement pris en charge
 
-| # | Payment type | Description |
+| N° | Type de paiement | Description |
 |---|---|---|
-| 1 | **Intrabank, single currency** | Between two First Bank DRC accounts in the same currency (CDF or USD) |
-| 2 | **Intrabank, multi-currency** | Between two First Bank DRC accounts in different currencies |
-| 3 | **Interbank, local currency (LCY)** | To an account at another DRC bank, in CDF |
-| 4 | **Interbank, foreign currency (FCY)** | To an account at another DRC bank, in a foreign currency such as USD |
-| 5 | **Foreign transfer** | Cross-border, to an overseas bank identified by its SWIFT/BIC code |
+| 1 | **Intrabancaire, monodevise** | Entre deux comptes First Bank DRC dans la même devise (CDF ou USD) |
+| 2 | **Intrabancaire, multidevise** | Entre deux comptes First Bank DRC dans des devises différentes |
+| 3 | **Interbancaire, monnaie locale (LCY)** | Vers un compte dans une autre banque de la RDC, en CDF |
+| 4 | **Interbancaire, devises (FCY)** | Vers un compte dans une autre banque de la RDC, dans une devise étrangère telle que l'USD |
+| 5 | **Virement international** | Transfrontalier, vers une banque étrangère identifiée par son code SWIFT/BIC |
 
-## How it works
+## Fonctionnement
 
-H2H uses a push and pull model over SFTP. You push encrypted payment files to your folder on the Bank's SFTP server. The CIB platform picks them up, processes them, and writes an encrypted acknowledgement file back to your folder for you to collect.
+Le H2H repose sur un modèle de dépôt et de récupération (push et pull) via SFTP. Vous déposez des fichiers de paiement chiffrés dans votre dossier sur le serveur SFTP de la Banque. La plateforme CIB les récupère, les traite, puis dépose en retour dans votre dossier un fichier d'accusé de réception chiffré que vous récupérez.
 
 ```mermaid
 sequenceDiagram
-    participant C as Your ERP / treasury system
-    participant S as Bank SFTP server
-    participant B as CIB platform
-    C->>C: Build XML payment file
-    C->>C: Encrypt with bank_public_key
-    C->>S: Upload .xml.pgp from whitelisted IP
-    B->>S: Poll for new files
-    B->>B: Decrypt, validate, process payments
-    B->>S: Write ACK, encrypted with customer_public_key
-    C->>S: Poll /Acknowledgements/
-    C->>C: Decrypt ACK and reconcile
+    participant C as Votre ERP / système de trésorerie
+    participant S as Serveur SFTP de la Banque
+    participant B as Plateforme CIB
+    C->>C: Générer le fichier de paiement XML
+    C->>C: Chiffrer avec bank_public_key
+    C->>S: Déposer le .xml.pgp depuis une adresse IP autorisée
+    B->>S: Rechercher les nouveaux fichiers
+    B->>B: Déchiffrer, valider, traiter les paiements
+    B->>S: Écrire l'ACK, chiffré avec customer_public_key
+    C->>S: Interroger /Acknowledgements/
+    C->>C: Déchiffrer l'ACK et rapprocher
 ```
 
 <Steps>
-  <Step title="Build the file">
-    Your system creates the payment file in the prescribed XML format.
+  <Step title="Générez le fichier">
+    Votre système crée le fichier de paiement au format XML prescrit.
   </Step>
-  <Step title="Encrypt it">
-    Encrypt the file with the Bank's PGP public key (`bank_public_key`).
+  <Step title="Chiffrez-le">
+    Chiffrez le fichier avec la clé publique PGP de la Banque (`bank_public_key`).
   </Step>
-  <Step title="Upload it">
-    Connect to the SFTP server from your whitelisted static IP address with your SFTP username and password. Upload the encrypted file (`.xml.pgp` or `.xml.gpg`) to your customer folder.
+  <Step title="Déposez-le">
+    Connectez-vous au serveur SFTP depuis votre adresse IP statique autorisée (en liste blanche), avec votre nom d'utilisateur et votre mot de passe SFTP. Déposez le fichier chiffré (`.xml.pgp` ou `.xml.gpg`) dans votre dossier client.
   </Step>
-  <Step title="The Bank processes it">
-    The CIB platform picks up the file, decrypts it, and checks it against the specification and business rules. Valid payments are sent to the right payment rail: intrabank, interbank, or foreign.
+  <Step title="La Banque le traite">
+    La plateforme CIB récupère le fichier, le déchiffre et le contrôle au regard de la spécification et des règles de gestion. Les paiements valides sont acheminés vers le circuit de paiement approprié : intrabancaire, interbancaire ou international.
   </Step>
-  <Step title="Collect the acknowledgement">
-    The platform writes an XML acknowledgement, encrypted with your PGP public key (`customer_public_key`), to the `/Acknowledgements/` folder. Your system collects it, decrypts it with your private key, and reconciles the results.
+  <Step title="Récupérez l'accusé de réception">
+    La plateforme écrit un accusé de réception XML, chiffré avec votre clé publique PGP (`customer_public_key`), dans le dossier `/Acknowledgements/`. Votre système le récupère, le déchiffre avec votre clé privée et rapproche les résultats.
   </Step>
 </Steps>
 
 <Note>
-The CIB platform checks for new files at set intervals, so processing is not instant. The Bank confirms the polling interval and processing times during onboarding.
+La plateforme CIB recherche les nouveaux fichiers à intervalles réguliers : le traitement n'est donc pas instantané. La Banque confirme l'intervalle d'interrogation et les délais de traitement lors de l'intégration (onboarding).
 </Note>
 
-## Where to go next
+## Pour aller plus loin
 
 <CardGroup cols={2}>
-  <Card title="Onboarding" icon="list-check" href="/host-to-host/onboarding">
-    The 12 steps to go live, and who does what.
+  <Card title="Intégration" icon="list-check" href="/host-to-host/onboarding">
+    Les 12 étapes jusqu'à la mise en production, et le rôle de chacun.
   </Card>
-  <Card title="Security and keys" icon="lock" href="/host-to-host/security">
-    PGP encryption, IP whitelisting, and SFTP access.
+  <Card title="Sécurité et clés" icon="lock" href="/host-to-host/security">
+    Chiffrement PGP, liste blanche d'adresses IP et accès SFTP.
   </Card>
-  <Card title="File specifications" icon="file-code" href="/host-to-host/file-specifications">
-    XML structure and fields for all five payment types.
+  <Card title="Spécifications des fichiers" icon="file-code" href="/host-to-host/file-specifications">
+    Structure XML et champs pour les cinq types de paiement.
   </Card>
-  <Card title="Acknowledgements" icon="file-circle-check" href="/host-to-host/acknowledgements">
-    Read results and status codes for every payment.
+  <Card title="Accusés de réception" icon="file-circle-check" href="/host-to-host/acknowledgements">
+    Consultez les résultats et les codes de statut de chaque paiement.
   </Card>
 </CardGroup>

@@ -1,25 +1,25 @@
 ---
-title: "Glossary"
-description: "Terms used in the Host-to-Host documentation"
+title: "Glossaire"
+description: "Termes utilisés dans la documentation Host-to-Host"
 ---
 
-| Term | Meaning |
+| Terme | Signification |
 |---|---|
-| **ACH** | Automated Clearing House. The DRC interbank clearing system for batch settlement of interbank transfers. |
-| **ACK** | Acknowledgement file. Returned by the Bank to the `/Acknowledgements/` folder after a payment file is processed. Rejected files produce an ACK named after the failure reason. |
-| **BCC** | Banque Centrale du Congo, the central bank of the DRC. It regulates payments and foreign exchange. |
-| **bank_public_key** | The Bank's PGP public key. You use it to encrypt payment files before upload. |
-| **CDF** | Congolese franc, the local currency of the DRC |
-| **CIB platform** | First Bank DRC's Corporate Internet Banking platform. It processes H2H payment files and creates acknowledgements. |
-| **customer_public_key** | Your PGP public key, uploaded to your SFTP folder. The Bank uses it to encrypt acknowledgement files. |
-| **FX** | Foreign exchange. The conversion between currencies for multi-currency and foreign transfers. |
-| **H2H (Host-to-Host)** | A direct, system-to-system link between your ERP or treasury system and the Bank's payment platform |
-| **IP whitelisting** | A security control that only allows SFTP connections from approved IP addresses |
-| **ISO 20022** | An international standard for financial messaging. H2H files use its `pain.001.001.03` namespace and envelope. |
-| **pain.001.001.03** | The ISO 20022 Customer Credit Transfer Initiation message. H2H uses its namespace and `<CstmrCdtTrfInitn>` envelope with a Bank-defined payload. |
-| **PGP / GPG** | Pretty Good Privacy / GNU Privacy Guard. The OpenPGP (RFC 4880) encryption standard used for H2H files. |
-| **RTGS** | Real-Time Gross Settlement. Used for high-value or urgent interbank transfers, settled individually and in real time. |
-| **SFTP** | SSH File Transfer Protocol. The encrypted protocol used to exchange files with the Bank. |
-| **SFTP credentials** | The username and password the Bank issues for your SFTP account |
-| **SWIFT / BIC** | The network and Bank Identifier Code used to identify banks in cross-border payments |
-| **UETR** | Unique End-to-end Transaction Reference. The SWIFT reference used to track a cross-border payment. |
+| **ACH** | Chambre de compensation automatisée (Automated Clearing House). Système de compensation interbancaire de la RDC pour le règlement par lots des virements interbancaires. |
+| **ACK** | Fichier d'accusé de réception (Acknowledgement). Renvoyé par la Banque dans le dossier `/Acknowledgements/` après le traitement d'un fichier de paiement. Les fichiers rejetés génèrent un ACK portant le nom du motif de l'échec. |
+| **BCC** | Banque Centrale du Congo, la banque centrale de la RDC. Elle réglemente les paiements et les opérations de change. |
+| **bank_public_key** | La clé publique PGP de la Banque. Vous l'utilisez pour chiffrer les fichiers de paiement avant leur dépôt. |
+| **CDF** | Franc congolais, la monnaie locale de la RDC |
+| **CIB platform** | Plateforme CIB : la plateforme Corporate Internet Banking de First Bank DRC. Elle traite les fichiers de paiement H2H et génère les accusés de réception. |
+| **customer_public_key** | Votre clé publique PGP, déposée dans votre dossier SFTP. La Banque l'utilise pour chiffrer les fichiers d'accusé de réception. |
+| **FX** | Change (Foreign Exchange). Conversion entre devises pour les virements multidevises et internationaux. |
+| **H2H (Host-to-Host)** | Liaison directe, de système à système, entre votre ERP ou votre système de trésorerie et la plateforme de paiement de la Banque |
+| **IP whitelisting** | Liste blanche d'adresses IP. Contrôle de sécurité qui n'autorise les connexions SFTP qu'à partir d'adresses IP approuvées. |
+| **ISO 20022** | Norme internationale de messagerie financière. Les fichiers H2H utilisent son espace de noms et son enveloppe `pain.001.001.03`. |
+| **pain.001.001.03** | Message ISO 20022 d'initiation de virement client (Customer Credit Transfer Initiation). Le H2H utilise son espace de noms et son enveloppe `<CstmrCdtTrfInitn>` avec un contenu défini par la Banque. |
+| **PGP / GPG** | Pretty Good Privacy / GNU Privacy Guard. Norme de chiffrement OpenPGP (RFC 4880) utilisée pour les fichiers H2H. |
+| **RTGS** | Règlement brut en temps réel (Real-Time Gross Settlement). Utilisé pour les virements interbancaires de montant élevé ou urgents, réglés individuellement et en temps réel. |
+| **SFTP** | Protocole de transfert de fichiers SSH (SSH File Transfer Protocol). Protocole chiffré utilisé pour échanger des fichiers avec la Banque. |
+| **SFTP credentials** | Identifiants SFTP : le nom d'utilisateur et le mot de passe que la Banque attribue à votre compte SFTP |
+| **SWIFT / BIC** | Le réseau et le code d'identification bancaire (Bank Identifier Code) utilisés pour identifier les banques dans les paiements transfrontaliers |
+| **UETR** | Référence de transaction unique de bout en bout (Unique End-to-end Transaction Reference). Référence SWIFT utilisée pour suivre un paiement transfrontalier. |

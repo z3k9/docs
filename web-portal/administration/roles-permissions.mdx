@@ -1,44 +1,44 @@
 ---
-title: "Roles and permissions"
-description: "How Initiator and Authorizer roles control who can submit and who can approve"
+title: "Rôles et permissions"
+description: "Comment les rôles Initiateur et Autorisateur déterminent qui peut soumettre et qui peut approuver"
 ---
 
-Every officer on your organisation's account is given a role when they are added. The role decides whether the officer can submit transactions and requests, approve them, or both.
+Chaque agent du compte de votre organisation reçoit un rôle lors de son ajout. Le rôle détermine si l'agent peut soumettre des transactions et des demandes, les approuver, ou les deux.
 
-## Role types
+## Types de rôles
 
-| Role | What the officer can do |
+| Rôle | Ce que l'agent peut faire |
 |---|---|
-| `ROLE_INITIATOR` | Create and submit transactions and requests. Submissions go to a queue for approval. |
-| `ROLE_AUTHORIZER` | Review items waiting in the [Transaction Queue](/web-portal/approvals/transaction-queue) and [Activities Queue](/web-portal/approvals/activities-queue), then approve or decline them. |
-| `ROLE_INITIATOR_AUTHORIZER` | Do both: submit items and approve them. |
+| `ROLE_INITIATOR` | Créer et soumettre des transactions et des demandes. Les soumissions sont placées dans une file pour approbation. |
+| `ROLE_AUTHORIZER` | Examiner les éléments en attente dans la [File des transactions](/web-portal/approvals/transaction-queue) et la [File des activités](/web-portal/approvals/activities-queue), puis les approuver ou les refuser. |
+| `ROLE_INITIATOR_AUTHORIZER` | Faire les deux : soumettre des éléments et les approuver. |
 
 <Warning>
-An officer with `ROLE_INITIATOR_AUTHORIZER` can both create and approve transactions. Assign this role only where your organisation's internal controls allow it.
+Un agent disposant du rôle `ROLE_INITIATOR_AUTHORIZER` peut à la fois créer et approuver des transactions. N'attribuez ce rôle que si les contrôles internes de votre organisation le permettent.
 </Warning>
 
-## Class of signatory
+## Classe de signataire
 
-Alongside the role, each officer is given a **Class of Signatory** (for example `A` or `B`). The class reflects the officer's signing authority.
+En plus du rôle, chaque agent reçoit une **Classe de signataire** (par exemple `A` ou `B`). La classe reflète le pouvoir de signature de l'agent.
 
 <Note>
-For the approval rules that apply to each class on your account, such as which classes must sign together, contact your relationship manager.
+Pour connaître les règles d'approbation applicables à chaque classe sur votre compte, par exemple les classes qui doivent signer conjointement, contactez votre chargé de clientèle.
 </Note>
 
-## How the approval flow works
+## Fonctionnement du circuit d'approbation
 
 <Steps>
-  <Step title="An Initiator submits">
-    An officer with initiation rights creates a payment or request, for example in [Send Money](/web-portal/payments/send-money).
+  <Step title="Un Initiateur soumet">
+    Un agent disposant de droits d'initiation crée un paiement ou une demande, par exemple dans [Envoyer de l'argent](/web-portal/payments/send-money).
   </Step>
-  <Step title="The item is queued">
-    Transactions go to the **Transaction Queue**. Administrative changes go to the **Activities Queue**.
+  <Step title="L'élément est placé en file">
+    Les transactions sont placées dans la **File des transactions**. Les modifications administratives sont placées dans la **File des activités**.
   </Step>
-  <Step title="An Authorizer decides">
-    An officer with approval rights approves or declines the item. Approved transactions are then processed by the bank.
+  <Step title="Un Autorisateur décide">
+    Un agent disposant de droits d'approbation approuve ou refuse l'élément. Les transactions approuvées sont ensuite traitées par la banque.
   </Step>
 </Steps>
 
-## Assigning a role
+## Attribuer un rôle
 
-You choose the role and class of signatory in the last step of the **Add Officer** wizard. See [Officers](/web-portal/administration/officers) for the full walkthrough.
+Vous choisissez le rôle et la classe de signataire à la dernière étape de l'assistant **Ajouter un agent**. Consultez [Agents](/web-portal/administration/officers) pour le parcours complet.

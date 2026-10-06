@@ -1,133 +1,133 @@
 ---
-title: "Sign up and sign in"
-sidebarTitle: "Sign up and sign in"
-description: "Create your account, sign in, and get set up on First Bank CIB"
+title: "Inscription et connexion"
+sidebarTitle: "Inscription et connexion"
+description: "Créez votre compte, connectez-vous et configurez First Bank CIB"
 ---
 
-The Web Portal is where most of your day-to-day banking activity happens: onboarding, account management, payments, and approvals.
+Le Portail Web est l'endroit où se déroule l'essentiel de votre activité bancaire quotidienne : intégration, gestion des comptes, paiements et approbations.
 
-## Sign-up flow at a glance
+## Aperçu du parcours d'inscription
 
 ```mermaid
 flowchart TD
-    A[Click Create Your Account] --> B[Personal Information]
-    B --> C[Contact Details]
-    C --> D[Secure Your Account]
-    D --> E[Verify Email OTP]
-    E --> F[Account Created]
-    F --> G[First Sign-In Attempt]
-    G --> H[Set Up Your Organisation]
-    H -->|Existing First Bank account| I[Link Account Number]
-    H -->|Register a new company| J[Visit a DR Congo Branch in Person]
-    I --> K[Onboarding continues:<br/>KYC + Officer Setup]
-    J --> L[Flow ends online \u2014<br/>completed at the branch]
+    A[Cliquer sur Créer votre compte] --> B[Informations personnelles]
+    B --> C[Coordonnées]
+    C --> D[Sécuriser votre compte]
+    D --> E[Vérifier l'OTP par e-mail]
+    E --> F[Compte créé]
+    F --> G[Première tentative de connexion]
+    G --> H[Configurer votre organisation]
+    H -->|Compte First Bank existant| I[Lier le numéro de compte]
+    H -->|Enregistrer une nouvelle entreprise| J[Se rendre en personne dans une agence en RDC]
+    I --> K[L'intégration continue :<br/>KYC + configuration des agents]
+    J --> L[Le parcours se termine en ligne,<br/>finalisé en agence]
 ```
 
 <Note>
-"Register a new company" is **not** a digital flow. The platform directs the user to visit a First Bank DRC branch in person to open a corporate account. Only "I have an existing First Bank account" continues online.
+« Enregistrer une nouvelle entreprise » n'est **pas** un parcours numérique. La plateforme invite l'utilisateur à se rendre en personne dans une agence First Bank DRC pour ouvrir un compte corporate. Seule l'option « J'ai un compte First Bank existant » se poursuit en ligne.
 </Note>
 
 <Note>
-The Organisation Code used to sign in is **not** created during signup. It's assigned separately by First Bank DRC (e.g., via your relationship manager) once your company/account setup is confirmed.
+Le Code organisation utilisé pour se connecter n'est **pas** créé lors de l'inscription. Il est attribué séparément par First Bank DRC (par exemple via votre chargé de clientèle) une fois la configuration de votre entreprise et de votre compte confirmée.
 </Note>
 
-## Creating your account
+## Créer votre compte
 
 <Steps>
-  <Step title="Click Create Your Account">
-    From the Sign In screen, select **Create your account**.
+  <Step title="Cliquer sur Créer votre compte">
+    Depuis l'écran de connexion, sélectionnez **Créer votre compte**.
   </Step>
-  <Step title="Personal Information">
-    Enter your **First Name** and **Last Name**.
+  <Step title="Informations personnelles">
+    Saisissez votre **Prénom** et votre **Nom**.
   </Step>
-  <Step title="Contact Details">
-    Enter your **Email** and **Phone number** (with country code, e.g. +243).
+  <Step title="Coordonnées">
+    Saisissez votre **E-mail** et votre **Numéro de téléphone** (avec l'indicatif pays, par ex. +243).
   </Step>
-  <Step title="Secure Your Account">
-    Create a password. It must be at least 8 characters and include an uppercase letter, a lowercase letter, a number, and a special character. Confirm the password.
+  <Step title="Sécuriser votre compte">
+    Créez un mot de passe. Il doit comporter au moins 8 caractères et inclure une majuscule, une minuscule, un chiffre et un caractère spécial. Confirmez le mot de passe.
   </Step>
-  <Step title="Verify Your Email">
-    Enter the 6-digit OTP sent to the email address you provided, then select **Verify OTP**.
+  <Step title="Vérifier votre e-mail">
+    Saisissez le code OTP à 6 chiffres envoyé à l'adresse e-mail fournie, puis sélectionnez **Vérifier l'OTP**.
   </Step>
-  <Step title="Account Created">
-    You'll see a confirmation that your user was created successfully, and you'll be returned to the Sign In screen.
+  <Step title="Compte créé">
+    Une confirmation indique que votre utilisateur a été créé avec succès, et vous êtes redirigé vers l'écran de connexion.
   </Step>
 </Steps>
 
-## Signing in
+## Se connecter
 
-The Sign In screen requires three fields:
+L'écran de connexion requiert trois champs :
 
-| Field | Where it comes from |
+| Champ | Provenance |
 |---|---|
-| **Organisation Code** | Assigned separately by First Bank DRC, not created during signup |
-| **Email** | The email you registered during signup |
-| **Password** | The password you set during signup |
+| **Code organisation** | Attribué séparément par First Bank DRC, non créé lors de l'inscription |
+| **E-mail** | L'e-mail enregistré lors de l'inscription |
+| **Mot de passe** | Le mot de passe défini lors de l'inscription |
 
 <Warning>
-Without an Organisation Code, sign-in cannot be completed. The screen shows "Organisation code is required." If you haven't received yours yet, contact your relationship manager.
+Sans Code organisation, la connexion ne peut pas aboutir. L'écran affiche « Le code organisation est requis ». Si vous ne l'avez pas encore reçu, contactez votre chargé de clientèle.
 </Warning>
 
-## Setting up your organisation
+## Configurer votre organisation
 
-The first time you attempt to sign in, you won't have an Organisation Code yet, because none has been linked to your new user account. Instead of the standard sign-in, you'll land on **Set up your organisation**, which offers two paths:
+Lors de votre première tentative de connexion, vous n'aurez pas encore de Code organisation, car aucun n'a encore été associé à votre nouveau compte utilisateur. Au lieu de l'écran de connexion standard, vous arriverez sur **Configurer votre organisation**, qui propose deux parcours :
 
-<Frame caption="Set up your organisation: choose to link an existing account or register a new company">
-  <img src="/images/web-portal/sign-up/sign-up-1.png" alt="Set up your organisation screen with two options: link an existing First Bank account, or register a new company" />
+<Frame caption="Configurer votre organisation : choisir de lier un compte existant ou d'enregistrer une nouvelle entreprise">
+  <img src="/images/web-portal/sign-up/sign-up-1.png" alt="Écran Configurer votre organisation avec deux options : lier un compte First Bank existant ou enregistrer une nouvelle entreprise" />
 </Frame>
 
 <Tabs>
-  <Tab title="I have an existing First Bank account">
-    Select this option to link your company's existing First Bank account number. This continues digitally: you'll proceed to link your account and carry on toward KYC document upload and officer setup.
+  <Tab title="J'ai un compte First Bank existant">
+    Sélectionnez cette option pour lier le numéro de compte First Bank existant de votre entreprise. Ce parcours se poursuit numériquement : vous procédez à la liaison de votre compte, puis à l'envoi des documents KYC et à la configuration des agents.
 
-    <Frame caption="Existing account option shown selected">
-      <img src="/images/web-portal/sign-up/sign-up-2.png" alt="Set up your organisation screen with the existing account option highlighted" />
+    <Frame caption="Option compte existant affichée sélectionnée">
+      <img src="/images/web-portal/sign-up/sign-up-2.png" alt="Écran Configurer votre organisation avec l'option compte existant mise en évidence" />
     </Frame>
   </Tab>
 
-  <Tab title="Register a new company">
-    Select this option only if your company has never held a First Bank account before.
+  <Tab title="Enregistrer une nouvelle entreprise">
+    Sélectionnez cette option uniquement si votre entreprise n'a jamais détenu de compte First Bank auparavant.
 
     <Warning>
-    This path is **not** self-service. Selecting it opens a modal explaining that registering a new company requires an in-person visit to the nearest First Bank DR Congo branch. Once the branch has set up your corporate account, you return to this screen and select "I have an existing First Bank account" instead to continue online.
+    Ce parcours n'est **pas** en libre-service. Le sélectionner ouvre une fenêtre expliquant que l'enregistrement d'une nouvelle entreprise nécessite une visite en personne à l'agence First Bank RDC la plus proche. Une fois votre compte corporate configuré par l'agence, vous revenez à cet écran et sélectionnez « J'ai un compte First Bank existant » pour continuer en ligne.
     </Warning>
 
-    <Frame caption="Register a new company: redirects to an in-person branch visit">
-      <img src="/images/web-portal/sign-up/sign-up-3.png" alt="Modal instructing the user to visit a DR Congo branch in person to register a new company, with contact email and phone provided" />
+    <Frame caption="Enregistrer une nouvelle entreprise : redirige vers une visite en agence">
+      <img src="/images/web-portal/sign-up/sign-up-3.png" alt="Fenêtre invitant l'utilisateur à se rendre en personne dans une agence en RDC pour enregistrer une nouvelle entreprise, avec un e-mail et un numéro de téléphone de contact" />
     </Frame>
 
-    The modal provides First Bank DRC's contact email and phone number as a fallback for questions before visiting a branch.
+    La fenêtre fournit l'e-mail et le numéro de téléphone de contact de First Bank DRC en cas de questions avant de vous rendre en agence.
   </Tab>
 </Tabs>
 
-## What happens next
+## Et ensuite ?
 
 <Info>
-For companies linking an existing account, further onboarding (including **KYC document upload**) happens after organisation setup. You can then add your team under [Officers](/web-portal/administration/officers).
+Pour les entreprises qui lient un compte existant, la suite de l'intégration (dont l'**envoi des documents KYC**) a lieu après la configuration de l'organisation. Vous pouvez ensuite ajouter votre équipe dans [Agents](/web-portal/administration/officers).
 </Info>
 
-## Navigating the Web Portal
+## Naviguer dans le Portail Web
 
-Once you're signed in, the sidebar is your main way of moving around the platform. It's grouped into seven sections:
+Une fois connecté, le menu latéral est votre principal moyen de navigation dans la plateforme. Il est organisé en sept sections :
 
-<Frame caption="Web Portal sidebar: Dashboard, Account Services, Approval Queue, and Payment Services">
-  <img src="/images/web-portal/sign-up/sign-up-4.png" alt="First Bank CIB Web Portal sidebar showing Dashboard, Account Services (Accounts, Transactions, Statements, Cheque Management, Beneficiaries, Virtual Token, Sweep Payments), Approval Queue (Activities Queue, Transaction Queue), and the start of Payment Services" />
+<Frame caption="Menu latéral du Portail Web : Tableau de bord, Services de compte, File d'approbation et Services de paiement">
+  <img src="/images/web-portal/sign-up/sign-up-4.png" alt="Menu latéral du Portail Web First Bank CIB affichant Tableau de bord, Services de compte (Comptes, Transactions, Relevés, Gestion des chèques, Bénéficiaires, Jeton virtuel, Virements automatiques), File d'approbation (File des activités, File des transactions) et le début de Services de paiement" />
 </Frame>
 
-<Frame caption="Web Portal sidebar: Payment Services, Administration, Settings, and Support">
-  <img src="/images/web-portal/sign-up/sign-up-5.png" alt="First Bank CIB Web Portal sidebar showing the rest of Payment Services (Send Money, Own Account Transfer, FCY Interbank Transfer, Bulk Transfer, Invoices, Standing Instructions, Bank to Wallet), Administration (Officers, Officer Settings, Organisation Settings, Roles and Permissions), Settings, and Support" />
+<Frame caption="Menu latéral du Portail Web : Services de paiement, Administration, Paramètres et Support">
+  <img src="/images/web-portal/sign-up/sign-up-5.png" alt="Menu latéral du Portail Web First Bank CIB affichant la suite de Services de paiement (Envoyer de l'argent, Virement entre comptes, Virement interbancaire devises, Virement groupé, Factures, Instructions permanentes, Banque vers portefeuille), Administration (Agents, Paramètres agents, Paramètres organisation, Rôles et permissions), Paramètres et Support" />
 </Frame>
 
-| Sidebar section | Modules |
+| Section du menu | Modules |
 |---|---|
-| **Dashboard** | Dashboard |
-| **Account Services** | Accounts, Transactions, Statements, Cheque Management, Beneficiaries, Virtual Token, Sweep Payments |
-| **Approval Queue** | Activities Queue, Transaction Queue |
-| **Payment Services** | Send Money, Own Account Transfer, FCY Interbank Transfer, Bulk Transfer, Invoices, Standing Instructions, Bank to Wallet |
-| **Administration** | Officers, Officer Settings, Organisation Settings, Roles & Permissions |
-| **Settings** | Settings |
+| **Tableau de bord** | Tableau de bord |
+| **Services de compte** | Comptes, Transactions, Relevés, Gestion des chèques, Bénéficiaires, Jeton virtuel, Virements automatiques |
+| **File d'approbation** | File des activités, File des transactions |
+| **Services de paiement** | Envoyer de l'argent, Virement entre comptes, Virement interbancaire devises, Virement groupé, Factures, Instructions permanentes, Banque vers portefeuille |
+| **Administration** | Agents, Paramètres agents, Paramètres organisation, Rôles et permissions |
+| **Paramètres** | Paramètres |
 | **Support** | Support |
 
 <Note>
-Your next step after signing in is usually to add the people who will operate the account. See [Officers](/web-portal/administration/officers).
+Après votre connexion, l'étape suivante consiste généralement à ajouter les personnes qui vont opérer le compte. Consultez [Agents](/web-portal/administration/officers).
 </Note>

@@ -1,43 +1,43 @@
 ---
-title: "Send Money"
-description: "Transfer funds to any bank account"
+title: "Envoyer de l'argent"
+description: "Transférez des fonds vers n'importe quel compte bancaire"
 ---
 
-Send Money is the standard way to transfer funds to any bank account, whether a saved beneficiary or a new recipient.
+Envoyer de l'argent est le moyen standard de transférer des fonds vers n'importe quel compte bancaire, qu'il s'agisse d'un bénéficiaire enregistré ou d'un nouveau destinataire.
 
-<Frame caption="Select Recipient: source account, saved beneficiaries, or a new recipient">
-  <img src="/images/web-portal/send-money/send-money-1.png" alt="Send Money step 1, Select Recipient, with Source Account dropdown, Saved Beneficiary and New Recipient tabs, a beneficiary search field, Add Beneficiary link, and a list of beneficiaries tagged Intrabank or Interbank" />
+<Frame caption="Sélectionner le bénéficiaire : compte source, bénéficiaires enregistrés ou nouveau destinataire">
+  <img src="/images/web-portal/send-money/send-money-1.png" alt="Envoyer de l'argent, étape 1, Sélectionner le bénéficiaire, avec la liste déroulante du compte source, les onglets Bénéficiaire enregistré et Nouveau destinataire, un champ de recherche de bénéficiaire, un lien Ajouter un bénéficiaire et une liste de bénéficiaires étiquetés Intrabancaire ou Interbancaire" />
 </Frame>
 
-## The transfer flow
+## Le parcours de virement
 
 <Steps>
-  <Step title="Recipient">
-    Select the **Source Account**, then choose a **Saved Beneficiary** (searchable list, each tagged Intrabank or Interbank) or enter a **New Recipient**.
+  <Step title="Bénéficiaire">
+    Sélectionnez le **Compte source**, puis choisissez un **Bénéficiaire enregistré** (liste consultable, chacun étiqueté Intrabancaire ou Interbancaire) ou saisissez un **Nouveau destinataire**.
   </Step>
-  <Step title="Amount">
-    Enter the amount. Choose a **Payment Channel**, either **ACH** (standard interbank transfer) or **RTGS** (real-time settlement for large transfers), and add an optional **Narration**.
+  <Step title="Montant">
+    Saisissez le montant. Choisissez un **Canal de paiement**, soit **ACH** (virement interbancaire standard), soit **RTGS** (règlement en temps réel pour les virements importants), et ajoutez un libellé facultatif dans le champ **Narration**.
 
-    <Frame caption="Enter Amount: payment channel, amount, and narration">
-      <img src="/images/web-portal/send-money/send-money-2.png" alt="Send Money step 2, Enter Amount, showing You Send and They Receive currency, Payment Channel options ACH and RTGS, an amount field, Beneficiary receives amount, and a Narration field" />
+    <Frame caption="Saisir le montant : canal de paiement, montant et libellé">
+      <img src="/images/web-portal/send-money/send-money-2.png" alt="Envoyer de l'argent, étape 2, Saisir le montant, affichant la devise envoyée et la devise reçue, les options de canal de paiement ACH et RTGS, un champ de montant, le montant reçu par le bénéficiaire et un champ Narration" />
     </Frame>
   </Step>
-  <Step title="Review & Confirm">
-    Review the full transfer summary (Initiated By, Source and Destination Account details, Payment Channel, Amount, and Narration), then select **Confirm Transfer**.
+  <Step title="Vérifier et confirmer">
+    Vérifiez le récapitulatif complet du virement (Initié par, détails des comptes source et destination, canal de paiement, montant et libellé), puis sélectionnez **Confirmer le virement**.
 
-    <Frame caption="Review Transfer: full summary before confirming">
-      <img src="/images/web-portal/send-money/send-money-3.png" alt="Send Money step 3, Review Transfer, showing Initiated By, Source Account Number and Name, Destination Account Name and Number, Destination Bank, Payment Channel, Amount, and Narration, with a Confirm Transfer button" />
+    <Frame caption="Vérifier le virement : récapitulatif complet avant confirmation">
+      <img src="/images/web-portal/send-money/send-money-3.png" alt="Envoyer de l'argent, étape 3, Vérifier le virement, affichant Initié par, le numéro et le nom du compte source, le nom et le numéro du compte destination, la banque destinataire, le canal de paiement, le montant et le libellé, avec un bouton Confirmer le virement" />
     </Frame>
   </Step>
-  <Step title="Done">
-    The transaction is pushed to the Transaction Queue, awaiting approval from your company's Authorizer, with a Batch Reference for tracking.
+  <Step title="Terminé">
+    La transaction est envoyée vers la File des transactions, en attente d'approbation par l'Autorisateur de votre entreprise, avec une référence de lot pour le suivi.
 
-    <Frame caption="Transaction Pushed to Queue: awaiting approval">
-      <img src="/images/web-portal/send-money/send-money-4.png" alt="Send Money step 4, Done, showing Transaction Pushed to Queue, Awaiting Approval, the amount and recipient, a Batch Reference, and New Transfer and View Transaction Queue buttons" />
+    <Frame caption="Transaction envoyée vers la file : en attente d'approbation">
+      <img src="/images/web-portal/send-money/send-money-4.png" alt="Envoyer de l'argent, étape 4, Terminé, affichant Transaction envoyée vers la file, En attente d'approbation, le montant et le destinataire, une référence de lot, et les boutons Nouveau virement et Afficher la file des transactions" />
     </Frame>
   </Step>
 </Steps>
 
 <Note>
-An **Upload in bulk** shortcut is available from the Send Money screen, linking through to Bulk Transfer for multiple payments at once.
+Un raccourci **Téléverser en masse** est disponible depuis l'écran Envoyer de l'argent. Il renvoie vers Virement groupé pour effectuer plusieurs paiements à la fois.
 </Note>

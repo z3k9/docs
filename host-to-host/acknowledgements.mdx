@@ -1,54 +1,54 @@
 ---
-title: "Acknowledgement files"
-sidebarTitle: "Acknowledgements"
-description: "How to read the acknowledgement for each payment file and what each status code means"
+title: "Fichiers d'accusé de réception"
+sidebarTitle: "Accusés de réception"
+description: "Comment lire l'accusé de réception de chaque fichier de paiement et ce que signifie chaque code de statut"
 ---
 
-After processing each payment file, the CIB platform writes an encrypted XML acknowledgement to the `/Acknowledgements/` folder inside your customer folder. It gives a status for the file as a whole, and for every transaction in it.
+Après le traitement de chaque fichier de paiement, la plateforme CIB écrit un accusé de réception XML chiffré dans le dossier `/Acknowledgements/` de votre dossier client. Il indique un statut pour le fichier dans son ensemble, ainsi que pour chacune des transactions qu'il contient.
 
 ## Structure
 
 ```xml
 <AcknowledgementDocument>
   <header>
-    <fileid>Reference of the original payment file</fileid>
-    <processeddate>Date the file was processed (YYYYMMDD)</processeddate>
-    <timestamp>Time the acknowledgement was generated (HHMMSS)</timestamp>
+    <fileid>Référence du fichier de paiement d'origine</fileid>
+    <processeddate>Date de traitement du fichier (YYYYMMDD)</processeddate>
+    <timestamp>Heure de génération de l'accusé de réception (HHMMSS)</timestamp>
     <status>FILE_ACCEPTED | FILE_REJECTED</status>
   </header>
   <results>
     <transaction>
-      <transactionid>Original transaction ID from the payment file</transactionid>
+      <transactionid>Identifiant de transaction d'origine figurant dans le fichier de paiement</transactionid>
       <status>SUCCESS | PENDING | FAILED</status>
-      <bankref>First Bank DRC's internal transaction reference</bankref>
-      <errormessage>Error description (only when status is FAILED)</errormessage>
+      <bankref>Référence interne de la transaction chez First Bank DRC</bankref>
+      <errormessage>Description de l'erreur (uniquement si le statut est FAILED)</errormessage>
     </transaction>
-    <!-- One <transaction> block per instruction in the original file -->
+    <!-- Un bloc <transaction> par instruction du fichier d'origine -->
   </results>
 </AcknowledgementDocument>
 ```
 
-## Status codes
+## Codes de statut
 
-### File level
+### Niveau fichier
 
-| Status | Meaning | What to do |
+| Statut | Signification | Action à mener |
 |---|---|---|
-| `FILE_ACCEPTED` | The file passed structural and schema checks. Each transaction's result is in the `<results>` block. | Check the status of each transaction. |
-| `FILE_REJECTED` | The file failed validation, for example malformed XML, failed decryption, or a schema error. **No transactions were processed.** The acknowledgement is named after the failure reason, such as `missing_public_key`. | Fix the file and resubmit it. See [Errors and support](/host-to-host/errors-and-support). |
+| `FILE_ACCEPTED` | Le fichier a passé avec succès les contrôles de structure et de schéma. Le résultat de chaque transaction figure dans le bloc `<results>`. | Vérifiez le statut de chaque transaction. |
+| `FILE_REJECTED` | Le fichier n'a pas passé la validation, par exemple en raison d'un XML mal formé, d'un échec de déchiffrement ou d'une erreur de schéma. **Aucune transaction n'a été traitée.** L'accusé de réception porte le nom du motif de l'échec, par exemple `missing_public_key`. | Corrigez le fichier et soumettez-le de nouveau. Consultez [Erreurs et support](/host-to-host/errors-and-support). |
 
-### Transaction level
+### Niveau transaction
 
-| Status | Meaning | What to do |
+| Statut | Signification | Action à mener |
 |---|---|---|
-| `SUCCESS` | The transaction was processed and sent to the payment rail. | Nothing. Keep the `<bankref>` for your records. |
-| `PENDING` | The transaction was accepted and is queued, for example waiting for FX approval on a foreign transfer, or for a settlement window. | Wait for it to complete. Contact the Bank if it stays pending longer than expected. |
-| `FAILED` | The transaction could not be processed. `<errormessage>` gives the reason. | Investigate, then resubmit only this transaction in a new file. |
+| `SUCCESS` | La transaction a été traitée et transmise au circuit de paiement. | Aucune. Conservez la `<bankref>` dans vos archives. |
+| `PENDING` | La transaction a été acceptée et est en file d'attente, par exemple dans l'attente de l'approbation de change pour un virement international, ou d'une fenêtre de règlement. | Attendez qu'elle soit finalisée. Contactez la Banque si elle reste en attente plus longtemps que prévu. |
+| `FAILED` | La transaction n'a pas pu être traitée. `<errormessage>` en indique le motif. | Analysez le problème, puis soumettez de nouveau uniquement cette transaction dans un nouveau fichier. |
 
-## Collecting and reconciling
+## Récupération et rapprochement
 
 <Note>
-The Bank doesn't send notifications when an acknowledgement is ready. Your system needs to poll the `/Acknowledgements/` folder and match each acknowledgement against the file you submitted.
+La Banque n'envoie pas de notification lorsqu'un accusé de réception est disponible. Votre système doit interroger le dossier `/Acknowledgements/` et rapprocher chaque accusé de réception du fichier que vous avez soumis.
 </Note>
 
-Acknowledgement files stay in the folder for a period confirmed during onboarding. After that, the Bank may archive or delete them, so collect and store them promptly.
+Les fichiers d'accusé de réception restent dans le dossier pendant une durée confirmée lors de l'intégration. Au-delà, la Banque peut les archiver ou les supprimer : récupérez-les et conservez-les donc sans tarder.

@@ -1,37 +1,37 @@
 ---
-title: "SFTP folders and file naming"
-sidebarTitle: "SFTP folders and naming"
-description: "Where to upload files, where acknowledgements appear, and how to name and encode your files"
+title: "Dossiers SFTP et nommage des fichiers"
+sidebarTitle: "Dossiers SFTP et nommage"
+description: "Où déposer vos fichiers, où trouver les accusés de réception, et comment nommer et encoder vos fichiers"
 ---
 
-## Folder structure
+## Arborescence des dossiers
 
-The Bank creates a dedicated folder for your organisation on the SFTP server:
+La Banque crée un dossier dédié à votre organisation sur le serveur SFTP :
 
 ```text
 /h2h/customers/
-└── [customer_folder_name]/       ← you upload customer_public_key and payment files here
-    └── Acknowledgements/         ← the CIB platform writes acknowledgement files here
+└── [customer_folder_name]/       ← vous déposez ici customer_public_key et les fichiers de paiement
+    └── Acknowledgements/         ← la plateforme CIB écrit ici les fichiers d'accusé de réception
 ```
 
-| Folder | What it's for |
+| Dossier | Utilisation |
 |---|---|
-| **`[customer_folder_name]/`** | Your customer folder. Upload your `customer_public_key` here (once at onboarding, and again whenever you rotate it), plus every encrypted payment file. The CIB platform checks this folder for new files and moves them out once they're processed. |
-| **`Acknowledgements/`** | Where the CIB platform writes an acknowledgement for each file it processes. Collect them from here for reconciliation. |
+| **`[customer_folder_name]/`** | Votre dossier client. Déposez-y votre `customer_public_key` (une fois lors de l'intégration, puis à chaque renouvellement), ainsi que chaque fichier de paiement chiffré. La plateforme CIB recherche les nouveaux fichiers dans ce dossier et les en retire une fois traités. |
+| **`Acknowledgements/`** | Dossier dans lequel la plateforme CIB écrit un accusé de réception pour chaque fichier traité. Récupérez-les ici pour le rapprochement. |
 
 <Note>
-Upload your public key and payment files to the customer folder itself, not to the `Acknowledgements` sub-folder. The Bank confirms your exact folder path when your account is set up.
+Déposez votre clé publique et vos fichiers de paiement dans le dossier client lui-même, et non dans le sous-dossier `Acknowledgements`. La Banque confirme le chemin exact de votre dossier lors de la création de votre compte.
 </Note>
 
-## Naming payment files
+## Nommage des fichiers de paiement
 
-Use a consistent file name so files are easy to process and reconcile. The recommended pattern is:
+Utilisez un nom de fichier cohérent afin de faciliter le traitement et le rapprochement des fichiers. Le modèle recommandé est le suivant :
 
 ```text
 [CustomerCode]_[PaymentType]_[YYYYMMDD]_[HHMMSS].xml.pgp
 ```
 
-For example:
+Par exemple :
 
 ```text
 ACMECORP_INTRABANK_20260601_143022.xml.pgp
@@ -40,30 +40,30 @@ ACMECORP_FOREIGN_20260601_150000.xml.pgp
 ```
 
 <Info>
-The Bank confirms the naming convention during onboarding. If it specifies a different pattern, use that one.
+La Banque confirme la convention de nommage lors de l'intégration. Si elle impose un modèle différent, utilisez celui-ci.
 </Info>
 
-## Acknowledgement file names
+## Nom des fichiers d'accusé de réception
 
-Acknowledgements are named after the file they relate to:
+Les accusés de réception portent le nom du fichier auquel ils se rapportent :
 
 ```text
 ACK_[OriginalFileName]_[Timestamp].xml.pgp
 ```
 
-For example:
+Par exemple :
 
 ```text
 ACK_ACMECORP_INTRABANK_20260601_143022_20260601_144500.xml.pgp
 ```
 
-If a file is rejected, the acknowledgement is named after the reason, so you can see the cause before you open it. For example, a file sent before you uploaded your `customer_public_key` produces an acknowledgement named with `missing_public_key`.
+Si un fichier est rejeté, l'accusé de réception porte le nom du motif du rejet, ce qui vous permet d'en connaître la cause avant même de l'ouvrir. Par exemple, un fichier envoyé avant le dépôt de votre `customer_public_key` génère un accusé de réception dont le nom contient `missing_public_key`.
 
-## Encoding and size
+## Encodage et taille
 
-| Attribute | Requirement |
+| Attribut | Exigence |
 |---|---|
-| **Character encoding** | UTF-8 |
-| **Line endings** | CRLF or LF. Both are accepted. CRLF is recommended for Windows-based systems. |
-| **Transactions per file** | A file can hold many `<transaction>` blocks inside one `<data>` element |
-| **Maximum file size and transaction count** | Confirmed by the Bank during onboarding |
+| **Encodage des caractères** | UTF-8 |
+| **Fins de ligne** | CRLF ou LF. Les deux sont acceptés. CRLF est recommandé pour les systèmes sous Windows. |
+| **Transactions par fichier** | Un fichier peut contenir plusieurs blocs `<transaction>` dans un seul élément `<data>` |
+| **Taille maximale du fichier et nombre de transactions** | Confirmés par la Banque lors de l'intégration |

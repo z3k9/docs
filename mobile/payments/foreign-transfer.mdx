@@ -1,68 +1,68 @@
 ---
-title: "Foreign currency transfer (FCY)"
-sidebarTitle: "Foreign transfer (FCY)"
-description: "Send a foreign currency payment through SWIFT to a bank in the DRC or abroad"
+title: "Virement en devises (FCY)"
+sidebarTitle: "Virement en devises (FCY)"
+description: "Envoyez un paiement en devises via SWIFT vers une banque en RDC ou à l'étranger"
 ---
 
-Use **Foreign Transfer (FCY)** to send a cross-border or foreign currency payment through SWIFT. You may need to attach supporting documents.
+Utilisez **Virement international** pour envoyer un paiement transfrontalier ou en devises via SWIFT. Le formulaire s'ouvre sous le titre **Transfert étranger (FCY)**. Vous devrez peut-être joindre des pièces justificatives.
 
-The same form handles two cases. You choose between them with **Where is the beneficiary bank?**
+Le même formulaire couvre deux cas. Vous choisissez entre les deux avec **Où se trouve la banque bénéficiaire ?**
 
-| Option | Use it when |
+| Option | À utiliser lorsque |
 |---|---|
-| **Domestic** | You're sending foreign currency to a bank in the DRC |
-| **International** | You're sending to a bank outside the DRC |
+| **National** | Vous envoyez des devises vers une banque en RDC |
+| **International** | Vous envoyez des fonds vers une banque située hors de la RDC |
 
-## Filling in the transfer details
+## Saisir les détails du virement
 
 <Steps>
-  <Step title="Debit account and order type">
-    Choose the **Debit account** and the **Payment order type**, for example **Goods**.
+  <Step title="Compte de débit et type d'ordre">
+    Choisissez le **Compte de débit** et le **Type d'ordre de paiement**, par exemple **Services**.
   </Step>
-  <Step title="Beneficiary bank location">
-    Select **Domestic** or **International**.
+  <Step title="Emplacement de la banque bénéficiaire">
+    Sélectionnez **National** ou **International**.
   </Step>
-  <Step title="Beneficiary">
-    Choose **Saved beneficiary** or **One-time recipient**. For a one-time recipient, enter:
+  <Step title="Bénéficiaire">
+    Choisissez **Bénéficiaire enregistré** ou **Destinataire unique**. Pour un destinataire unique, saisissez :
 
-    - **Beneficiary name** and **Beneficiary account number**
-    - **Beneficiary country** (required)
-    - **Beneficiary bank** (required)
-    - **Beneficiary address** and **Beneficiary bank address**
-    - **Bank BIC / SWIFT code** (optional, international transfers)
+    - **Nom du bénéficiaire** et **Numéro de compte du bénéficiaire**
+    - **Pays du bénéficiaire** (obligatoire)
+    - **Banque bénéficiaire** (obligatoire)
+    - **Adresse du bénéficiaire** et **Adresse de la banque du bénéficiaire**
+    - **Code BIC / SWIFT de la banque (facultatif)**, pour les virements internationaux
   </Step>
-  <Step title="Amount and purpose">
-    Enter the **Amount**. The app spells the amount out in words so you can check it. Add an optional **Reference**, a **Reason for transfer**, and the **Remittance purpose** (required), for example **Spare parts**.
+  <Step title="Montant et objet">
+    Saisissez le **Montant**. L'application affiche le montant en toutes lettres pour que vous puissiez le vérifier. Ajoutez une **Référence (facultative)**, un **Motif du transfert** et l'**Objectif du versement** (obligatoire).
   </Step>
-  <Step title="Supporting documents">
-    Upload the documents for the payment as PDF, JPG, or PNG files. The list includes **Invoice**, **Letter of undertaking**, **Custom Document**, **Inspection**, **Bill of Lading**, **Airway Bill**, and **Other**. Items labelled **Optional** can be skipped.
+  <Step title="Pièces justificatives">
+    Sous **Pièces justificatives**, téléversez les documents du paiement au format PDF, JPG ou PNG avec **Télécharger**. Une **Facture** est requise (**Requis**). Les autres documents sont facultatifs et peuvent être joints sous **Autre** (**Facultatif**).
 
-    Tick **Save as beneficiary** if you'll pay this recipient again, then select **Continue** to review and submit the transfer.
+    Cochez **Enregistrer comme bénéficiaire** si vous comptez payer à nouveau ce destinataire, puis sélectionnez **Continuer** pour vérifier et soumettre le virement.
   </Step>
 </Steps>
 
 <Note>
-Like every transfer, an FCY payment goes to the Transaction Queue and must be approved by an Authorizer before it is processed.
+Comme tout virement, un paiement en devises est placé dans la file d'attente des transactions et doit être approuvé par un Autorisateur avant d'être traité.
 </Note>
 
-## Domestic example
+## Exemple national
 
 <Columns cols={2}>
-  <Frame caption="Domestic: beneficiary details">
-    <img src="/images/mobile/fcy-domestic-1.jpg" alt="Foreign Transfer step 1 of 2 with Domestic and One-time recipient selected, showing Debit account, Payment order type Goods, beneficiary name, account number, country Congo (DRC), and beneficiary bank" style={{ maxWidth: "300px" }} />
+  <Frame caption="National : coordonnées du bénéficiaire">
+    <img src="/images/mobile-fr/fcy-domestic-1.jpg" alt="Écran Transfert étranger (FCY), étape 1 de 2, avec National et Destinataire unique sélectionnés, affichant le compte de débit, le type d'ordre de paiement, le nom et le numéro de compte du bénéficiaire, le pays du bénéficiaire Congo (DRC) et le sélecteur de banque bénéficiaire" style={{ maxWidth: "300px" }} />
   </Frame>
-  <Frame caption="Domestic: purpose and documents">
-    <img src="/images/mobile/fcy-domestic-2.jpg" alt="Foreign Transfer form scrolled down, showing Reason for transfer, Remittance purpose Spare parts, and supporting document uploads for Invoice, Letter of undertaking, Custom Document, Inspection, Bill of Lading, Airway Bill and Other" style={{ maxWidth: "300px" }} />
+  <Frame caption="National : objet et documents">
+    <img src="/images/mobile-fr/fcy-domestic-2.jpg" alt="Formulaire Transfert étranger (FCY) défilé vers le bas, affichant les adresses du bénéficiaire et de sa banque, le montant en USD avec le montant en toutes lettres, la référence facultative, le motif du transfert, l'objectif du versement et les pièces justificatives Facture (requise) et Autre (facultative)" style={{ maxWidth: "300px" }} />
   </Frame>
 </Columns>
 
-## International example
+## Exemple international
 
 <Columns cols={2}>
-  <Frame caption="International: beneficiary details">
-    <img src="/images/mobile/fcy-international-1.jpg" alt="Foreign Transfer step 1 of 2 with International and One-time recipient selected, showing beneficiary name, account number, country India, beneficiary bank, and an optional Bank BIC or SWIFT code field" style={{ maxWidth: "300px" }} />
+  <Frame caption="International : coordonnées du bénéficiaire">
+    <img src="/images/mobile-fr/fcy-international-1.jpg" alt="Écran Transfert étranger (FCY), étape 1 de 2, avec International et Destinataire unique sélectionnés, affichant le nom et le numéro de compte du bénéficiaire, le pays du bénéficiaire, la banque bénéficiaire et le champ facultatif Code BIC / SWIFT de la banque" style={{ maxWidth: "300px" }} />
   </Frame>
-  <Frame caption="International: amount and documents">
-    <img src="/images/mobile/fcy-international-2.jpg" alt="Foreign Transfer form scrolled down, showing beneficiary address and bank address, Amount in USD with the amount in words, optional Reference, Reason for transfer, Remittance purpose, and supporting documents" style={{ maxWidth: "300px" }} />
+  <Frame caption="International : montant et documents">
+    <img src="/images/mobile-fr/fcy-international-2.jpg" alt="Formulaire Transfert étranger (FCY) défilé vers le bas, affichant les adresses du bénéficiaire et de sa banque, le montant en USD avec le montant en toutes lettres, la référence facultative, le motif du transfert, l'objectif du versement, et les pièces justificatives avec une facture déjà jointe et l'emplacement Autre facultatif" style={{ maxWidth: "300px" }} />
   </Frame>
 </Columns>

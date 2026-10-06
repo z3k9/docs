@@ -1,6 +1,7 @@
 # Documentation project instructions
 
 - Mintlify site for First Bank DRC's Corporate Internet Banking (CIB) platform. Pages are MDX with YAML frontmatter; config is `docs.json`.
+- Two languages: French (default) at the root, English under `en/`. Every page exists in both; keep them in sync. French terms: `../tools/i18n/fr-glossary.md`. French mobile pages use `/images/mobile-fr/`.
 - Three tabs: Web Portal (`web-portal/`), Mobile App (`mobile/`), Host-to-Host (`host-to-host/`).
 - The same MDX also builds the self-hosted React (Docusaurus) site in `../react-site` via `../tools/sync-docusaurus.mjs`. Only use components that script's shims support: Card, CardGroup, Columns, Steps, Step, Tabs, Tab, Accordion, AccordionGroup, Frame, Note, Info, Tip, Warning, Check.
 - Images: absolute paths under `/images/<channel>/<page>/`. Mobile screenshots use `style={{ maxWidth: "300px" }}`.

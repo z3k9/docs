@@ -1,59 +1,59 @@
 ---
-title: "Payment file specifications"
-sidebarTitle: "File specifications"
-description: "XML structure, header, and field definitions for all five H2H payment types, with ready-to-use templates"
+title: "Spécifications des fichiers de paiement"
+sidebarTitle: "Spécifications des fichiers"
+description: "Structure XML, en-tête et définition des champs pour les cinq types de paiement H2H, avec des modèles prêts à l'emploi"
 ---
 
-H2H payment files use the ISO 20022 `pain.001.001.03` namespace and document envelope. The root element is `<Document>` and the main envelope is `<CstmrCdtTrfInitn>`. Inside the envelope, H2H uses a simplified payload defined by the Bank:
+Les fichiers de paiement H2H utilisent l'espace de noms et l'enveloppe de document ISO 20022 `pain.001.001.03`. L'élément racine est `<Document>` et l'enveloppe principale est `<CstmrCdtTrfInitn>`. À l'intérieur de l'enveloppe, le H2H utilise un contenu simplifié défini par la Banque :
 
-- A `<header>` block with file-level details
-- A `<data>` block holding one or more `<transaction>` elements
+- Un bloc `<header>` contenant les informations au niveau du fichier
+- Un bloc `<data>` contenant un ou plusieurs éléments `<transaction>`
 
 <Warning>
-Validate your files against the **H2H XSD published by the Bank**, not the generic ISO 20022 `pain.001.001.03` XSD. The `<header>`, `<data>`, and `<transaction>` elements are Bank-defined, so a generic pain.001 validator will reject a correctly formed H2H file.
+Validez vos fichiers par rapport au **XSD H2H publié par la Banque**, et non par rapport au XSD générique ISO 20022 `pain.001.001.03`. Les éléments `<header>`, `<data>` et `<transaction>` sont définis par la Banque : un validateur pain.001 générique rejettera donc un fichier H2H pourtant correctement constitué.
 </Warning>
 
-## File header
+## En-tête du fichier
 
-Every file, whatever the payment type, starts with the same header.
+Chaque fichier, quel que soit le type de paiement, commence par le même en-tête.
 
 ```xml
 <header>
-  <fileid>Unique file identifier</fileid>
-  <creationdate>File creation date (YYYYMMDD)</creationdate>
-  <officeremail>Contact email of the authorised officer</officeremail>
-  <timestamp>File creation time (HHMMSS)</timestamp>
+  <fileid>Identifiant unique du fichier</fileid>
+  <creationdate>Date de création du fichier (YYYYMMDD)</creationdate>
+  <officeremail>Adresse e-mail de contact de l'agent habilité</officeremail>
+  <timestamp>Heure de création du fichier (HHMMSS)</timestamp>
 </header>
 ```
 
-| Field | Format | Required | Description |
+| Champ | Format | Obligatoire | Description |
 |---|---|---|---|
-| `<fileid>` | String | Yes | Unique ID for the file, used to detect duplicates and for audit. Recommended: customer reference + date + sequence number. |
-| `<creationdate>` | YYYYMMDD | Yes | Date the file was created, for example `20260601` |
-| `<officeremail>` | Email | Yes | Email of the authorised officer submitting the file. Used for notifications and the audit trail. |
-| `<timestamp>` | HHMMSS | Yes | Time the file was created, 24-hour clock, for example `143022` |
+| `<fileid>` | Chaîne | Oui | Identifiant unique du fichier, utilisé pour détecter les doublons et pour l'audit. Recommandé : référence client + date + numéro de séquence. |
+| `<creationdate>` | YYYYMMDD | Oui | Date de création du fichier, par exemple `20260601` |
+| `<officeremail>` | E-mail | Oui | Adresse e-mail de l'agent habilité qui soumet le fichier. Utilisée pour les notifications et la piste d'audit. |
+| `<timestamp>` | HHMMSS | Oui | Heure de création du fichier, au format 24 heures, par exemple `143022` |
 
-## Field rules for all types
+## Règles applicables à tous les types
 
-- **Amounts:** numbers only. Decimals are allowed. Don't include currency symbols or commas.
-- **Currencies:** ISO 4217 codes, such as `CDF`, `USD`, or `EUR`.
-- **Transaction IDs:** must be unique. Recommended format: HHMMSS + YYYYMMDD + customer code + sequence, for example `14302220260601ACME01`.
+- **Montants :** chiffres uniquement. Les décimales sont autorisées. N'incluez ni symbole monétaire ni séparateur de milliers (virgule).
+- **Devises :** codes ISO 4217, tels que `CDF`, `USD` ou `EUR`.
+- **Identifiants de transaction :** ils doivent être uniques. Format recommandé : HHMMSS + YYYYMMDD + code client + séquence, par exemple `14302220260601ACME01`.
 
-## Intrabank transfer (single currency)
+## Virement intrabancaire (monodevise)
 
-For transfers between two First Bank DRC accounts in the same currency (CDF or USD).
+Pour les virements entre deux comptes First Bank DRC dans la même devise (CDF ou USD).
 
-| Field | Format | Required | Description |
+| Champ | Format | Obligatoire | Description |
 |---|---|---|---|
-| `<transactionid>` | String | Yes | Unique reference for this transaction within the file |
-| `<currency>` | ISO 4217 | Yes | Currency of the transfer. Must match the currency of both accounts. |
-| `<amount>` | Numeric | Yes | Transfer amount |
-| `<destinationaccountnumber>` | String | Yes | Beneficiary's First Bank DRC account number |
-| `<beneficiaryname>` | String | Yes | Full name of the beneficiary account holder |
-| `<sourceaccountnumber>` | String | Yes | First Bank DRC account to debit |
-| `<narration>` | String | Yes | Payment narration or reference. Appears on the beneficiary's statement. |
+| `<transactionid>` | Chaîne | Oui | Référence unique de cette transaction au sein du fichier |
+| `<currency>` | ISO 4217 | Oui | Devise du virement. Elle doit correspondre à la devise des deux comptes. |
+| `<amount>` | Numérique | Oui | Montant du virement |
+| `<destinationaccountnumber>` | Chaîne | Oui | Numéro de compte First Bank DRC du bénéficiaire |
+| `<beneficiaryname>` | Chaîne | Oui | Nom complet du titulaire du compte bénéficiaire |
+| `<sourceaccountnumber>` | Chaîne | Oui | Compte First Bank DRC à débiter |
+| `<narration>` | Chaîne | Oui | Libellé ou référence du paiement. Figure sur le relevé du bénéficiaire. |
 
-```xml Intrabank template
+```xml Modèle intrabancaire
 <?xml version="1.0" encoding="UTF-8"?>
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -74,36 +74,36 @@ For transfers between two First Bank DRC accounts in the same currency (CDF or U
         <sourceaccountnumber>[DebitAccountNumber]</sourceaccountnumber>
         <narration>[PaymentNarration]</narration>
       </transaction>
-      <!-- Repeat the <transaction> block for each additional payment -->
+      <!-- Répétez le bloc <transaction> pour chaque paiement supplémentaire -->
     </data>
   </CstmrCdtTrfInitn>
 </Document>
 ```
 
-## Intrabank transfer (multi-currency)
+## Virement intrabancaire (multidevise)
 
-For transfers between two First Bank DRC accounts in different currencies, for example CDF to USD. Use the **intrabank template above**. The only difference is that `<currency>` carries the **destination** currency. The Bank applies its prevailing FX rate at the time of processing.
+Pour les virements entre deux comptes First Bank DRC dans des devises différentes, par exemple de CDF vers USD. Utilisez le **modèle intrabancaire ci-dessus**. La seule différence est que `<currency>` contient la devise de **destination**. La Banque applique son taux de change en vigueur au moment du traitement.
 
 <Note>
-Check which currency pairs are supported with your relationship manager before sending multi-currency files.
+Vérifiez auprès de votre chargé de clientèle les paires de devises prises en charge avant d'envoyer des fichiers multidevises.
 </Note>
 
-## Interbank transfer, local currency (LCY)
+## Virement interbancaire, monnaie locale (LCY)
 
-For transfers from a First Bank DRC account to an account at another bank in the DRC, in CDF. These settle through ACH or RTGS.
+Pour les virements d'un compte First Bank DRC vers un compte dans une autre banque de la RDC, en CDF. Ces virements sont réglés via ACH ou RTGS.
 
-| Field | Format | Required | Description |
+| Champ | Format | Obligatoire | Description |
 |---|---|---|---|
-| `<transactionid>` | String | Yes | Unique transaction reference |
-| `<currency>` | ISO 4217 | Yes | Must be `CDF` |
-| `<amount>` | Numeric | Yes | Transfer amount |
-| `<destinationaccountnumber>` | String | Yes | Beneficiary's account number at the destination bank |
-| `<beneficiaryname>` | String | Yes | Full name of the beneficiary |
-| `<sourceaccountnumber>` | String | Yes | First Bank DRC account to debit |
-| `<destinationbankname>` | String | Yes | Full name of the destination bank |
-| `<destinationbankcode>` | String | Yes | The destination bank's code as used on ACH and RTGS, in the format confirmed during onboarding. Ask your relationship manager for the code list. |
+| `<transactionid>` | Chaîne | Oui | Référence unique de la transaction |
+| `<currency>` | ISO 4217 | Oui | Doit être `CDF` |
+| `<amount>` | Numérique | Oui | Montant du virement |
+| `<destinationaccountnumber>` | Chaîne | Oui | Numéro de compte du bénéficiaire dans la banque de destination |
+| `<beneficiaryname>` | Chaîne | Oui | Nom complet du bénéficiaire |
+| `<sourceaccountnumber>` | Chaîne | Oui | Compte First Bank DRC à débiter |
+| `<destinationbankname>` | Chaîne | Oui | Nom complet de la banque de destination |
+| `<destinationbankcode>` | Chaîne | Oui | Code de la banque de destination tel qu'utilisé sur ACH et RTGS, au format confirmé lors de l'intégration. Demandez la liste des codes à votre chargé de clientèle. |
 
-```xml Interbank LCY template
+```xml Modèle interbancaire LCY
 <?xml version="1.0" encoding="UTF-8"?>
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -125,29 +125,29 @@ For transfers from a First Bank DRC account to an account at another bank in the
         <destinationbankname>[DestinationBankName]</destinationbankname>
         <destinationbankcode>[DestinationBankCode]</destinationbankcode>
       </transaction>
-      <!-- Repeat the <transaction> block for each additional payment -->
+      <!-- Répétez le bloc <transaction> pour chaque paiement supplémentaire -->
     </data>
   </CstmrCdtTrfInitn>
 </Document>
 ```
 
-## Interbank transfer, foreign currency (FCY)
+## Virement interbancaire, devises (FCY)
 
-For transfers from a First Bank DRC account to an account at another bank in the DRC, in a foreign currency such as USD or EUR. Where the source and destination currencies differ, the Bank converts at its prevailing rate.
+Pour les virements d'un compte First Bank DRC vers un compte dans une autre banque de la RDC, dans une devise étrangère telle que l'USD ou l'EUR. Lorsque les devises source et de destination diffèrent, la Banque effectue la conversion à son taux en vigueur.
 
-| Field | Format | Required | Description |
+| Champ | Format | Obligatoire | Description |
 |---|---|---|---|
-| `<transactionid>` | String | Yes | Unique transaction reference |
-| `<amount>` | Numeric | Yes | Transfer amount in the **source** currency |
-| `<sourcecurrency>` | ISO 4217 | Yes | Currency of the debit account, for example `CDF` or `USD` |
-| `<destinationcurrency>` | ISO 4217 | Yes | Currency of the beneficiary account, for example `USD` or `EUR` |
-| `<destinationaccountnumber>` | String | Yes | Beneficiary's account number at the destination bank |
-| `<beneficiaryname>` | String | Yes | Full name of the beneficiary |
-| `<sourceaccountnumber>` | String | Yes | First Bank DRC account to debit |
-| `<destinationbankname>` | String | Yes | Full name of the destination bank |
-| `<destinationbankcode>` | String | Yes | Destination bank code, in the same format as for LCY transfers |
+| `<transactionid>` | Chaîne | Oui | Référence unique de la transaction |
+| `<amount>` | Numérique | Oui | Montant du virement dans la devise **source** |
+| `<sourcecurrency>` | ISO 4217 | Oui | Devise du compte de débit, par exemple `CDF` ou `USD` |
+| `<destinationcurrency>` | ISO 4217 | Oui | Devise du compte bénéficiaire, par exemple `USD` ou `EUR` |
+| `<destinationaccountnumber>` | Chaîne | Oui | Numéro de compte du bénéficiaire dans la banque de destination |
+| `<beneficiaryname>` | Chaîne | Oui | Nom complet du bénéficiaire |
+| `<sourceaccountnumber>` | Chaîne | Oui | Compte First Bank DRC à débiter |
+| `<destinationbankname>` | Chaîne | Oui | Nom complet de la banque de destination |
+| `<destinationbankcode>` | Chaîne | Oui | Code de la banque de destination, au même format que pour les virements LCY |
 
-```xml Interbank FCY template
+```xml Modèle interbancaire FCY
 <?xml version="1.0" encoding="UTF-8"?>
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -170,32 +170,32 @@ For transfers from a First Bank DRC account to an account at another bank in the
         <destinationbankname>[DestinationBankName]</destinationbankname>
         <destinationbankcode>[DestinationBankCode]</destinationbankcode>
       </transaction>
-      <!-- Repeat the <transaction> block for each additional payment -->
+      <!-- Répétez le bloc <transaction> pour chaque paiement supplémentaire -->
     </data>
   </CstmrCdtTrfInitn>
 </Document>
 ```
 
-## Foreign transfer (cross-border, SWIFT)
+## Virement international (transfrontalier, SWIFT)
 
-For payments to an account at an overseas bank. These go through SWIFT and need the destination bank's BIC/SWIFT code. All foreign transfers are subject to First Bank DRC's FX approval process and applicable regulations.
+Pour les paiements vers un compte dans une banque étrangère. Ces paiements transitent par SWIFT et nécessitent le code BIC/SWIFT de la banque de destination. Tous les virements internationaux sont soumis au processus d'approbation des opérations de change de First Bank DRC et à la réglementation applicable.
 
-| Field | Format | Required | Description |
+| Champ | Format | Obligatoire | Description |
 |---|---|---|---|
-| `<amount>` | Numeric | Yes | Amount in the source account currency. The Bank converts at its prevailing rate. |
-| `<destinationaccountnumber>` | String | Yes | Beneficiary's account number or IBAN at the overseas bank |
-| `<beneficiaryname>` | String | Yes | Beneficiary's full legal name, as it appears on their account |
-| `<sourceaccountnumber>` | String | Yes | First Bank DRC account to debit |
-| `<narration>` | String | Yes | Payment reference or description. Sent to the beneficiary's bank in the SWIFT message. |
-| `<destinationbankname>` | String | Yes | Full name of the beneficiary's bank |
-| `<beneficiaryaddress>` | String | Yes | Beneficiary's address, line 1. Required for regulatory compliance. |
-| `<beneficiaryaddressline2>` | String | No | Beneficiary's address, line 2 |
-| `<beneficiarybankaddress>` | String | Yes | Full address of the beneficiary's bank. Required for SWIFT messaging. |
-| `<destinationcurrency>` | ISO 4217 | Yes | Currency of the destination account, for example `USD`, `GBP`, or `EUR` |
-| `<remittancepurposecode>` | String | Yes | Transfer purpose code required by the Banque Centrale du Congo (BCC). Ask your relationship manager for the list of valid codes. |
-| `<swiftcode>` | String | Yes | 8 or 11 character SWIFT/BIC code of the beneficiary's bank, for example `BARCGB22` |
+| `<amount>` | Numérique | Oui | Montant dans la devise du compte source. La Banque effectue la conversion à son taux en vigueur. |
+| `<destinationaccountnumber>` | Chaîne | Oui | Numéro de compte ou IBAN du bénéficiaire dans la banque étrangère |
+| `<beneficiaryname>` | Chaîne | Oui | Nom légal complet du bénéficiaire, tel qu'il figure sur son compte |
+| `<sourceaccountnumber>` | Chaîne | Oui | Compte First Bank DRC à débiter |
+| `<narration>` | Chaîne | Oui | Référence ou description du paiement. Transmise à la banque du bénéficiaire dans le message SWIFT. |
+| `<destinationbankname>` | Chaîne | Oui | Nom complet de la banque du bénéficiaire |
+| `<beneficiaryaddress>` | Chaîne | Oui | Adresse du bénéficiaire, ligne 1. Obligatoire pour la conformité réglementaire. |
+| `<beneficiaryaddressline2>` | Chaîne | Non | Adresse du bénéficiaire, ligne 2 |
+| `<beneficiarybankaddress>` | Chaîne | Oui | Adresse complète de la banque du bénéficiaire. Obligatoire pour la messagerie SWIFT. |
+| `<destinationcurrency>` | ISO 4217 | Oui | Devise du compte de destination, par exemple `USD`, `GBP` ou `EUR` |
+| `<remittancepurposecode>` | Chaîne | Oui | Code d'objectif du versement exigé par la Banque Centrale du Congo (BCC). Demandez la liste des codes valides à votre chargé de clientèle. |
+| `<swiftcode>` | Chaîne | Oui | Code SWIFT/BIC de 8 ou 11 caractères de la banque du bénéficiaire, par exemple `BARCGB22` |
 
-```xml Foreign transfer template
+```xml Modèle de virement international
 <?xml version="1.0" encoding="UTF-8"?>
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -221,15 +221,15 @@ For payments to an account at an overseas bank. These go through SWIFT and need 
         <remittancepurposecode>[BCCPurposeCode]</remittancepurposecode>
         <swiftcode>[8or11CharBICCode]</swiftcode>
       </transaction>
-      <!-- Repeat the <transaction> block for each additional payment -->
+      <!-- Répétez le bloc <transaction> pour chaque paiement supplémentaire -->
     </data>
   </CstmrCdtTrfInitn>
 </Document>
 ```
 
-## Completed example
+## Exemple complet
 
-An illustrative interbank (LCY) file. All names, accounts, and references are fictitious.
+Un fichier interbancaire (LCY) donné à titre d'illustration. Tous les noms, comptes et références sont fictifs.
 
 ```xml ACMECORP_INTERBANK_LCY_20260601_143500.xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -258,4 +258,4 @@ An illustrative interbank (LCY) file. All names, accounts, and references are fi
 </Document>
 ```
 
-Once the file is built, encrypt it with `bank_public_key` and upload it to your customer folder. See [SFTP folders and file naming](/host-to-host/sftp-and-file-naming).
+Une fois le fichier généré, chiffrez-le avec `bank_public_key` et déposez-le dans votre dossier client. Consultez [Dossiers SFTP et nommage des fichiers](/host-to-host/sftp-and-file-naming).

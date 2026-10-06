@@ -1,49 +1,49 @@
 ---
-title: "Approvals"
-description: "Review and approve transactions and administrative requests on the go"
+title: "Approbations"
+description: "Examinez et approuvez les transactions et les demandes administratives où que vous soyez"
 ---
 
-Select **Approvals** in the bottom navigation bar to see everything waiting for a decision. The red badge on the tab shows how many items are pending.
+Sélectionnez **Approbations** dans la barre de navigation en bas de l'écran pour voir tout ce qui attend une décision. Le badge rouge sur l'onglet indique le nombre d'éléments en attente.
 
-There are two queues:
+Il existe deux files :
 
-| Queue | What it holds |
+| File | Ce qu'elle contient |
 |---|---|
-| **Transaction Queue** | Payments submitted by Initiators, such as transfers and bulk uploads |
-| **Activity Queue** | Administrative requests, such as officer limits, account access, and onboarding changes |
+| **File d'attente des transactions** | Les paiements soumis par les Initiateurs, comme les virements et les téléversements groupés |
+| **Activity Queue** | Les demandes administratives, comme les limites des agents, l'accès aux comptes et les modifications d'intégration (onboarding) |
 
 <Note>
-Only officers with an Authorizer role (`ROLE_AUTHORIZER` or `ROLE_INITIATOR_AUTHORIZER`) can approve items. See [Roles and permissions](/web-portal/administration/roles-permissions).
+Seuls les agents disposant d'un rôle d'Autorisateur (`ROLE_AUTHORIZER` ou `ROLE_INITIATOR_AUTHORIZER`) peuvent approuver des éléments. Consultez [Rôles et permissions](/web-portal/administration/roles-permissions).
 </Note>
 
-## Transaction Queue
+## File d'attente des transactions
 
-<Frame caption="Transaction Queue">
-  <img src="/images/mobile/transaction-queue.jpg" alt="Transaction Queue with Single Transfers and Bulk Transfers tabs, Pending, Approved and Declined counts, filter tabs, and a list of transactions showing recipient, amount, bank, time and status" style={{ maxWidth: "300px" }} />
+<Frame caption="File d'attente des transactions">
+  <img src="/images/mobile-fr/transaction-queue.jpg" alt="File d'attente des transactions avec les onglets Transferts unitaires et Transferts Vrac, les compteurs En attente, Approuvé et Décliné, les onglets de filtre, et une liste de transactions indiquant le bénéficiaire, le montant, la banque, l'heure et le statut" style={{ maxWidth: "300px" }} />
 </Frame>
 
-- Switch between **Single Transfers** and **Bulk Transfers** at the top.
-- The cards show how many items are **Pending**, **Approved**, and **Declined**.
-- Filter the list with **Pending**, **Approved**, **Declined**, or **All**.
-- Each item shows the recipient, amount, bank, when it was submitted, and its status.
+- Basculez entre **Transferts unitaires** et **Transferts Vrac** en haut de l'écran.
+- Les cartes indiquent le nombre d'éléments **En attente**, **Approuvé** et **Décliné**.
+- Filtrez la liste avec **En attente**, **Approuvé**, **Décliné** ou **Tous**.
+- Chaque élément affiche le bénéficiaire, le montant, la banque, le moment de la soumission et le statut.
 
-To approve, select a transaction to open it, review the details, and approve or decline it.
+Pour approuver, sélectionnez une transaction pour l'ouvrir, examinez les détails, puis approuvez-la ou refusez-la.
 
 ## Activity Queue
 
 <Frame caption="Activity Queue">
-  <img src="/images/mobile/activity-queue.jpg" alt="Activity Queue with Pending, Approved and Declined counts and a list of requests such as Update officer limit, Update account access, Onboard new customer, Add preferred account, Create officer and Link user, each with the officer's name, time and status" style={{ maxWidth: "300px" }} />
+  <img src="/images/mobile-fr/activity-queue.jpg" alt="Écran Activity Queue, affiché en anglais, avec les compteurs Pending, Approved et Declined et une liste de demandes (mise à jour d'une limite d'agent ou d'un accès aux comptes, intégration d'un client, ajout d'un compte préféré, création d'un agent, liaison d'un utilisateur), chacune avec le nom de l'agent, l'heure et le statut" style={{ maxWidth: "300px" }} />
 </Frame>
 
-Each request shows:
+Chaque demande indique :
 
-- The action, such as **Update**, **Onboard**, **Add**, **Create**, or **Link**
-- What it affects, such as an officer limit, account access, or a preferred account
-- The officer it relates to, and when it was raised
-- Its status, for example **OrgProcessing**, **OrgApproved**, or **BankApproved**
+- L'action, comme **Update**, **Onboard**, **Add**, **Create** ou **Link**
+- L'élément concerné, comme une limite d'agent, l'accès à un compte ou un compte préféré
+- L'agent concerné et la date de la demande
+- Son statut, par exemple **OrgProcessing**, **OrgApproved** ou **BankApproved**
 
-Select a request to review it and approve or decline it.
+Sélectionnez une demande pour l'examiner, puis approuvez-la ou refusez-la.
 
 <Tip>
-Some changes need approval from both your organisation (**OrgApproved**) and the bank (**BankApproved**) before they take effect.
+Certaines modifications doivent être approuvées à la fois par votre organisation (**OrgApproved**) et par la banque (**BankApproved**) avant de prendre effet.
 </Tip>

@@ -6,14 +6,17 @@ User guide for First Bank DRC's Corporate Internet Banking platform, covering th
 
 | Folder | Content |
 |---|---|
-| `/` | Home (`index.mdx`), platform overview, support |
+| `/` | **French (default language).** Home (`index.mdx`), platform overview, support, and the folders below |
+| `en/` | English version, same structure. Served under `/en/...` |
 | `web-portal/` | Sign-up, dashboard, accounts, payments, approvals, administration, settings |
 | `mobile/` | Mobile app guide |
 | `host-to-host/` | H2H integration guide for corporate IT teams |
-| `images/` | Screenshots, grouped by channel and page |
+| `images/` | Screenshots, grouped by channel and page. `images/mobile-fr/` holds the French app screenshots |
 | `logo/`, `favicon.png` | First Bank DRC branding |
 
-Navigation, colours, and redirects from old URLs are all in `docs.json`.
+Navigation for both languages (`navigation.languages`, French marked `default`), colours, and redirects from old URLs are all in `docs.json`.
+
+When you change a page, update both the French file and its `en/` twin. French terminology is in `../tools/i18n/fr-glossary.md`.
 
 ## Preview locally
 

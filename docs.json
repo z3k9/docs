@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "First Bank DRC | CIB Guide",
-  "description": "Corporate Internet Banking user guide for First Bank DRC: Web Portal, Mobile App, and Host-to-Host",
+  "description": "Guide utilisateur de la plateforme Corporate Internet Banking de First Bank DRC : Portail Web, Application mobile et Host-to-Host",
   "colors": {
     "primary": "#152E4E",
     "light": "#F0BE2E",
@@ -14,139 +14,316 @@
     "dark": "/logo/dark.png",
     "href": "/"
   },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "/support"
-      }
-    ]
-  },
   "navigation": {
-    "tabs": [
+    "languages": [
       {
-        "tab": "Web Portal",
-        "groups": [
+        "language": "fr",
+        "default": true,
+        "tabs": [
           {
-            "group": "Get started",
-            "pages": [
-              "index",
-              "overview",
-              "web-portal/sign-up",
-              "web-portal/dashboard"
+            "tab": "Portail Web",
+            "groups": [
+              {
+                "group": "Prise en main",
+                "pages": [
+                  "index",
+                  "overview",
+                  "web-portal/sign-up",
+                  "web-portal/dashboard"
+                ]
+              },
+              {
+                "group": "Comptes",
+                "pages": [
+                  "web-portal/accounts/accounts",
+                  "web-portal/accounts/transactions",
+                  "web-portal/accounts/statements",
+                  "web-portal/accounts/beneficiaries",
+                  "web-portal/accounts/cheque-management",
+                  "web-portal/accounts/virtual-token",
+                  "web-portal/accounts/sweep-payments"
+                ]
+              },
+              {
+                "group": "Paiements",
+                "pages": [
+                  "web-portal/payments/send-money",
+                  "web-portal/payments/own-account-transfer",
+                  "web-portal/payments/fcy-interbank-transfer",
+                  "web-portal/payments/bulk-transfer",
+                  "web-portal/payments/standing-instructions",
+                  "web-portal/payments/direct-debit",
+                  "web-portal/payments/bank-to-wallet",
+                  "web-portal/payments/invoices"
+                ]
+              },
+              {
+                "group": "Approbations",
+                "pages": [
+                  "web-portal/approvals/transaction-queue",
+                  "web-portal/approvals/activities-queue"
+                ]
+              },
+              {
+                "group": "Administration",
+                "pages": [
+                  "web-portal/administration/officers",
+                  "web-portal/administration/roles-permissions"
+                ]
+              },
+              {
+                "group": "Paramètres et support",
+                "pages": [
+                  "web-portal/settings",
+                  "support"
+                ]
+              }
             ]
           },
           {
-            "group": "Accounts",
-            "pages": [
-              "web-portal/accounts/accounts",
-              "web-portal/accounts/transactions",
-              "web-portal/accounts/statements",
-              "web-portal/accounts/beneficiaries",
-              "web-portal/accounts/cheque-management",
-              "web-portal/accounts/virtual-token",
-              "web-portal/accounts/sweep-payments"
+            "tab": "Application mobile",
+            "groups": [
+              {
+                "group": "Prise en main",
+                "pages": [
+                  "mobile/overview",
+                  "mobile/sign-in",
+                  "mobile/home",
+                  "mobile/accounts"
+                ]
+              },
+              {
+                "group": "Payer",
+                "pages": [
+                  "mobile/payments/move-money",
+                  "mobile/payments/own-account-transfer",
+                  "mobile/payments/send-money",
+                  "mobile/payments/foreign-transfer"
+                ]
+              },
+              {
+                "group": "Approbations",
+                "pages": [
+                  "mobile/approvals"
+                ]
+              },
+              {
+                "group": "Plus",
+                "pages": [
+                  "mobile/more",
+                  "mobile/settings"
+                ]
+              }
             ]
           },
           {
-            "group": "Payments",
-            "pages": [
-              "web-portal/payments/send-money",
-              "web-portal/payments/own-account-transfer",
-              "web-portal/payments/fcy-interbank-transfer",
-              "web-portal/payments/bulk-transfer",
-              "web-portal/payments/standing-instructions",
-              "web-portal/payments/direct-debit",
-              "web-portal/payments/bank-to-wallet",
-              "web-portal/payments/invoices"
-            ]
-          },
-          {
-            "group": "Approvals",
-            "pages": [
-              "web-portal/approvals/transaction-queue",
-              "web-portal/approvals/activities-queue"
-            ]
-          },
-          {
-            "group": "Administration",
-            "pages": [
-              "web-portal/administration/officers",
-              "web-portal/administration/roles-permissions"
-            ]
-          },
-          {
-            "group": "Settings and support",
-            "pages": [
-              "web-portal/settings",
-              "support"
+            "tab": "Host-to-Host",
+            "groups": [
+              {
+                "group": "Prise en main",
+                "pages": [
+                  "host-to-host/overview",
+                  "host-to-host/onboarding"
+                ]
+              },
+              {
+                "group": "Intégration",
+                "pages": [
+                  "host-to-host/security",
+                  "host-to-host/sftp-and-file-naming",
+                  "host-to-host/file-specifications",
+                  "host-to-host/acknowledgements"
+                ]
+              },
+              {
+                "group": "Référence",
+                "pages": [
+                  "host-to-host/errors-and-support",
+                  "host-to-host/glossary"
+                ]
+              }
             ]
           }
-        ]
+        ],
+        "navbar": {
+          "links": [
+            {
+              "label": "Support",
+              "href": "/support"
+            }
+          ]
+        },
+        "footer": {
+          "links": [
+            {
+              "header": "First Bank DRC",
+              "items": [
+                {
+                  "label": "Support",
+                  "href": "/support"
+                },
+                {
+                  "label": "Présentation de la plateforme",
+                  "href": "/overview"
+                }
+              ]
+            }
+          ]
+        }
       },
       {
-        "tab": "Mobile App",
-        "groups": [
+        "language": "en",
+        "tabs": [
           {
-            "group": "Get started",
-            "pages": [
-              "mobile/overview",
-              "mobile/sign-in",
-              "mobile/home",
-              "mobile/accounts"
+            "tab": "Web Portal",
+            "groups": [
+              {
+                "group": "Get started",
+                "pages": [
+                  "en/index",
+                  "en/overview",
+                  "en/web-portal/sign-up",
+                  "en/web-portal/dashboard"
+                ]
+              },
+              {
+                "group": "Accounts",
+                "pages": [
+                  "en/web-portal/accounts/accounts",
+                  "en/web-portal/accounts/transactions",
+                  "en/web-portal/accounts/statements",
+                  "en/web-portal/accounts/beneficiaries",
+                  "en/web-portal/accounts/cheque-management",
+                  "en/web-portal/accounts/virtual-token",
+                  "en/web-portal/accounts/sweep-payments"
+                ]
+              },
+              {
+                "group": "Payments",
+                "pages": [
+                  "en/web-portal/payments/send-money",
+                  "en/web-portal/payments/own-account-transfer",
+                  "en/web-portal/payments/fcy-interbank-transfer",
+                  "en/web-portal/payments/bulk-transfer",
+                  "en/web-portal/payments/standing-instructions",
+                  "en/web-portal/payments/direct-debit",
+                  "en/web-portal/payments/bank-to-wallet",
+                  "en/web-portal/payments/invoices"
+                ]
+              },
+              {
+                "group": "Approvals",
+                "pages": [
+                  "en/web-portal/approvals/transaction-queue",
+                  "en/web-portal/approvals/activities-queue"
+                ]
+              },
+              {
+                "group": "Administration",
+                "pages": [
+                  "en/web-portal/administration/officers",
+                  "en/web-portal/administration/roles-permissions"
+                ]
+              },
+              {
+                "group": "Settings and support",
+                "pages": [
+                  "en/web-portal/settings",
+                  "en/support"
+                ]
+              }
             ]
           },
           {
-            "group": "Pay",
-            "pages": [
-              "mobile/payments/move-money",
-              "mobile/payments/own-account-transfer",
-              "mobile/payments/send-money",
-              "mobile/payments/foreign-transfer"
+            "tab": "Mobile App",
+            "groups": [
+              {
+                "group": "Get started",
+                "pages": [
+                  "en/mobile/overview",
+                  "en/mobile/sign-in",
+                  "en/mobile/home",
+                  "en/mobile/accounts"
+                ]
+              },
+              {
+                "group": "Pay",
+                "pages": [
+                  "en/mobile/payments/move-money",
+                  "en/mobile/payments/own-account-transfer",
+                  "en/mobile/payments/send-money",
+                  "en/mobile/payments/foreign-transfer"
+                ]
+              },
+              {
+                "group": "Approvals",
+                "pages": [
+                  "en/mobile/approvals"
+                ]
+              },
+              {
+                "group": "More",
+                "pages": [
+                  "en/mobile/more",
+                  "en/mobile/settings"
+                ]
+              }
             ]
           },
           {
-            "group": "Approvals",
-            "pages": [
-              "mobile/approvals"
-            ]
-          },
-          {
-            "group": "More",
-            "pages": [
-              "mobile/more",
-              "mobile/settings"
+            "tab": "Host-to-Host",
+            "groups": [
+              {
+                "group": "Get started",
+                "pages": [
+                  "en/host-to-host/overview",
+                  "en/host-to-host/onboarding"
+                ]
+              },
+              {
+                "group": "Integration",
+                "pages": [
+                  "en/host-to-host/security",
+                  "en/host-to-host/sftp-and-file-naming",
+                  "en/host-to-host/file-specifications",
+                  "en/host-to-host/acknowledgements"
+                ]
+              },
+              {
+                "group": "Reference",
+                "pages": [
+                  "en/host-to-host/errors-and-support",
+                  "en/host-to-host/glossary"
+                ]
+              }
             ]
           }
-        ]
-      },
-      {
-        "tab": "Host-to-Host",
-        "groups": [
-          {
-            "group": "Get started",
-            "pages": [
-              "host-to-host/overview",
-              "host-to-host/onboarding"
-            ]
-          },
-          {
-            "group": "Integration",
-            "pages": [
-              "host-to-host/security",
-              "host-to-host/sftp-and-file-naming",
-              "host-to-host/file-specifications",
-              "host-to-host/acknowledgements"
-            ]
-          },
-          {
-            "group": "Reference",
-            "pages": [
-              "host-to-host/errors-and-support",
-              "host-to-host/glossary"
-            ]
-          }
-        ]
+        ],
+        "navbar": {
+          "links": [
+            {
+              "label": "Support",
+              "href": "/en/support"
+            }
+          ]
+        },
+        "footer": {
+          "links": [
+            {
+              "header": "First Bank DRC",
+              "items": [
+                {
+                  "label": "Support",
+                  "href": "/en/support"
+                },
+                {
+                  "label": "Platform overview",
+                  "href": "/en/overview"
+                }
+              ]
+            }
+          ]
+        }
       }
     ]
   },
@@ -279,22 +456,5 @@
       "source": "/web-portal/administration/organisation-settings",
       "destination": "/web-portal/administration/officers"
     }
-  ],
-  "footer": {
-    "links": [
-      {
-        "header": "First Bank DRC",
-        "items": [
-          {
-            "label": "Support",
-            "href": "/support"
-          },
-          {
-            "label": "Platform overview",
-            "href": "/overview"
-          }
-        ]
-      }
-    ]
-  }
+  ]
 }
